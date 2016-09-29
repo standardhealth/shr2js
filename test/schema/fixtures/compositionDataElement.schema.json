@@ -1,0 +1,27 @@
+{
+  "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
+  "id": "http://standardhealthrecord.org/schemas/shr/test/composition.schema.json",
+  "description": "It is a composition data element",
+  "type": "object",
+  "properties": {
+    "shr.test.simple": {
+      "$ref": "http://standardhealthrecord.org/schemas/shr/test/simple.schema.json"
+    },
+    "shr.test.coded": {
+      "type": "array",
+      "items": {
+        "$ref": "http://standardhealthrecord.org/schemas/shr/test/coded.schema.json"
+      }
+    },
+    "shr.test.Simple": {
+      "type": "array",
+      "items": {
+        "$ref": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json"
+      },
+      "minItems": 1
+    },
+    "other.ns.thing": {
+      "$ref": "http://standardhealthrecord.org/schemas/other/ns/thing.schema.json"
+    }
+  }
+}

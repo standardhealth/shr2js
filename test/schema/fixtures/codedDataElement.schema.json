@@ -1,0 +1,8 @@
+{
+  "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
+  "id": "http://standardhealthrecord.org/schemas/shr/test/coded.schema.json",
+  "description": "It is a coded data element",
+  "type": "string",
+  "pattern": "[^\\s]+([\\s]?[^\\s]+)*",
+  "valueset": "http://standardhealthrecord.org/test/vs/coded"
+}
