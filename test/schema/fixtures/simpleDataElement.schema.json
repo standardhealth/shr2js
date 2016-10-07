@@ -1,6 +1,6 @@
 {
   "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
-  "id": "http://standardhealthrecord.org/schemas/shr/test/simple.schema.json",
+  "id": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json",
   "description": "It is a simple data element",
   "type": "string"
 }
