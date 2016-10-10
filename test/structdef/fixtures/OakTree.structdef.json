@@ -1,0 +1,100 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "OakTree",
+  "text": {
+    "status": "generated"
+  },
+  "url": "http://standardhealthrecord.org/StructureDefinition/shr/test/OakTree",
+  "identifier": [
+    {
+      "use": "usual",
+      "system": "http://standardhealthrecord.org",
+      "value": "shr.test.OakTree"
+    }
+  ],
+  "name": "OakTree",
+  "status": "draft",
+  "publisher": "Standard Health Record",
+  "description": "It is an oak tree",
+  "kind": "logical",
+  "abstract": false,
+  "type": "Element",
+  "snapshot": {
+    "element": [
+      {
+        "id": "OakTree",
+        "path": "OakTree",
+        "definition": "It is an oak tree",
+        "alias": "shr.test.OakTree",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "OakTree.value",
+        "path": "OakTree.value",
+        "definition": "It is a nest",
+        "alias": "shr.test.Nest",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "OakTree.value.value",
+        "path": "OakTree.value.value",
+        "definition": "It is a robin!",
+        "alias": "shr.test.Robin",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "OakTree",
+        "path": "OakTree",
+        "definition": "It is an oak tree",
+        "alias": "shr.test.OakTree",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "OakTree.value",
+        "path": "OakTree.value",
+        "definition": "It is a nest",
+        "alias": "shr.test.Nest",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "OakTree.value.value",
+        "path": "OakTree.value.value",
+        "definition": "It is a robin!",
+        "alias": "shr.test.Robin",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      }
+    ]
+  }
+}
