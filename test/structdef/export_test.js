@@ -15,6 +15,18 @@ describe('#exportToStructureDefinitions()', () => {
     expect(structdef).to.eql(expectedStructDef);
   });
 
+  it('should correctly export a simple entry in a different namespace', () => {
+    let expectedStructDef = importFixture('OtherSimple');
+    let otherNS = new Namespace('shr.other.test');
+    let simple = addSimpleThing(otherNS);
+    let section = new Section('test');
+    section.addEntry(new QuantifiedValue(new Value(simple.identifier), 0, 1));
+    let ns = new Namespace('shr.test');
+    ns.addSection(section);
+    let structdef = exportToSingleStructDef(ns, otherNS);
+    expect(structdef).to.eql(expectedStructDef);
+  });
+
   it('should correctly export a coded entry', () => {
     let expectedStructDef = importFixture('Coded');
     let ns = new Namespace('shr.test');
@@ -35,6 +47,19 @@ describe('#exportToStructureDefinitions()', () => {
     section.addEntry(new QuantifiedValue(new Value(simple.identifier), 0, 1));
     ns.addSection(section);
     let structdef = exportToSingleStructDef(ns);
+    expect(structdef).to.eql(expectedStructDef);
+  });
+
+  it('should correctly export an entry with nested value in a different namespace', () => {
+    // NOTE: This is an entry where the value is not a primitive, e.g. "Value: SomeOtherDataElement"
+    let expectedStructDef = importFixture('NestWithOtherRobin');
+    let ns = new Namespace('shr.test');
+    let otherNS = new Namespace('shr.other.test');
+    let simple = addNestWithOtherRobin(ns, otherNS);
+    let section = new Section('test');
+    section.addEntry(new QuantifiedValue(new Value(simple.identifier), 0, 1));
+    ns.addSection(section);
+    let structdef = exportToSingleStructDef(ns, otherNS);
     expect(structdef).to.eql(expectedStructDef);
   });
 
@@ -115,6 +140,15 @@ function addNest(ns, addSubElement=true) {
   return de;
 }
 
+function addNestWithOtherRobin(nestNS, robinNS) {
+  let de = new DataElement(new Identifier(nestNS.namespace, 'NestWithOtherRobin'));
+  de.description = 'It is a nest with a strange Robin!';
+  de.value = new Value(new Identifier(robinNS.namespace, 'Robin'));
+  nestNS.addDefinition(de);
+  addRobin(robinNS);
+  return de;
+}
+
 function addRobin(ns) {
   let de = new DataElement(new Identifier(ns.namespace, 'Robin'));
   de.description = 'It is a robin!';
@@ -123,7 +157,7 @@ function addRobin(ns) {
   return de;
 }
 
-function exportToSingleStructDef(namespace) {
+function exportToSingleStructDef(...namespace) {
   let structdefs = exportToStructureDefinitions(namespace);
   expect(structdefs).to.have.length(1);
   return structdefs[0];

@@ -1,0 +1,96 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "NestWithOtherRobin",
+  "text": {
+    "status": "generated"
+  },
+  "url": "http://standardhealthrecord.org/StructureDefinition/shr/test/NestWithOtherRobin",
+  "identifier": [
+    {
+      "use": "usual",
+      "system": "http://standardhealthrecord.org",
+      "value": "shr.test.NestWithOtherRobin"
+    }
+  ],
+  "name": "NestWithOtherRobin",
+  "status": "draft",
+  "publisher": "Standard Health Record",
+  "description": "It is a nest with a strange Robin!",
+  "kind": "logical",
+  "abstract": false,
+  "type": "Element",
+  "snapshot": {
+    "element": [
+      {
+        "id": "NestWithOtherRobin",
+        "path": "NestWithOtherRobin",
+        "definition": "It is a nest with a strange Robin!",
+        "alias": "shr.test.NestWithOtherRobin",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "NestWithOtherRobin.robin",
+        "path": "NestWithOtherRobin.robin",
+        "definition": "It is a robin!",
+        "alias": "shr.other.test.Robin",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "NestWithOtherRobin.robin.value",
+        "path": "NestWithOtherRobin.robin.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "NestWithOtherRobin",
+        "path": "NestWithOtherRobin",
+        "definition": "It is a nest with a strange Robin!",
+        "alias": "shr.test.NestWithOtherRobin",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "NestWithOtherRobin.robin",
+        "path": "NestWithOtherRobin.robin",
+        "definition": "It is a robin!",
+        "alias": "shr.other.test.Robin",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "NestWithOtherRobin.robin.value",
+        "path": "NestWithOtherRobin.robin.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      }
+    ]
+  }
+}
