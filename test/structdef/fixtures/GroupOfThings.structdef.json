@@ -38,6 +38,17 @@
         "max": "1",
         "type": [
           {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "GroupOfThings.simple.value",
+        "path": "GroupOfThings.simple.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
             "code": "string"
           }
         ],
@@ -49,6 +60,17 @@
         "definition": "It is a coded thing",
         "alias": "shr.test.Coded",
         "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "GroupOfThings.coded.value",
+        "path": "GroupOfThings.coded.value",
+        "min": 1,
         "max": "1",
         "type": [
           {
@@ -77,10 +99,21 @@
         ]
       },
       {
-        "id": "GroupOfThings.nest.value",
-        "path": "GroupOfThings.nest.value",
+        "id": "GroupOfThings.nest.robin",
+        "path": "GroupOfThings.nest.robin",
         "definition": "It is a robin!",
         "alias": "shr.test.Robin",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "GroupOfThings.nest.robin.value",
+        "path": "GroupOfThings.nest.robin.value",
         "min": 1,
         "max": "1",
         "type": [
@@ -111,6 +144,17 @@
         "max": "1",
         "type": [
           {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "GroupOfThings.simple.value",
+        "path": "GroupOfThings.simple.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
             "code": "string"
           }
         ],
@@ -122,6 +166,17 @@
         "definition": "It is a coded thing",
         "alias": "shr.test.Coded",
         "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "GroupOfThings.coded.value",
+        "path": "GroupOfThings.coded.value",
+        "min": 1,
         "max": "1",
         "type": [
           {
@@ -150,10 +205,21 @@
         ]
       },
       {
-        "id": "GroupOfThings.nest.value",
-        "path": "GroupOfThings.nest.value",
+        "id": "GroupOfThings.nest.robin",
+        "path": "GroupOfThings.nest.robin",
         "definition": "It is a robin!",
         "alias": "shr.test.Robin",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "GroupOfThings.nest.robin.value",
+        "path": "GroupOfThings.nest.robin.value",
         "min": 1,
         "max": "1",
         "type": [

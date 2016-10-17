@@ -32,8 +32,6 @@
       {
         "id": "Simple.value",
         "path": "Simple.value",
-        "definition": "It is a simple thing",
-        "alias": "shr.test.Simple",
         "min": 1,
         "max": "1",
         "type": [
@@ -58,8 +56,6 @@
       {
         "id": "Simple.value",
         "path": "Simple.value",
-        "definition": "It is a simple thing",
-        "alias": "shr.test.Simple",
         "min": 1,
         "max": "1",
         "type": [

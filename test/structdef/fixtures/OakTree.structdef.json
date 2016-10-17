@@ -30,8 +30,8 @@
         "max": "*"
       },
       {
-        "id": "OakTree.value",
-        "path": "OakTree.value",
+        "id": "OakTree.nest",
+        "path": "OakTree.nest",
         "definition": "It is a nest",
         "alias": "shr.test.Nest",
         "min": 1,
@@ -43,10 +43,21 @@
         ]
       },
       {
-        "id": "OakTree.value.value",
-        "path": "OakTree.value.value",
+        "id": "OakTree.nest.robin",
+        "path": "OakTree.nest.robin",
         "definition": "It is a robin!",
         "alias": "shr.test.Robin",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "OakTree.nest.robin.value",
+        "path": "OakTree.nest.robin.value",
         "min": 1,
         "max": "1",
         "type": [
@@ -69,8 +80,8 @@
         "max": "*"
       },
       {
-        "id": "OakTree.value",
-        "path": "OakTree.value",
+        "id": "OakTree.nest",
+        "path": "OakTree.nest",
         "definition": "It is a nest",
         "alias": "shr.test.Nest",
         "min": 1,
@@ -82,10 +93,21 @@
         ]
       },
       {
-        "id": "OakTree.value.value",
-        "path": "OakTree.value.value",
+        "id": "OakTree.nest.robin",
+        "path": "OakTree.nest.robin",
         "definition": "It is a robin!",
         "alias": "shr.test.Robin",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "OakTree.nest.robin.value",
+        "path": "OakTree.nest.robin.value",
         "min": 1,
         "max": "1",
         "type": [
