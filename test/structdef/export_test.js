@@ -1,7 +1,7 @@
 const {expect} = require('chai');
 const fs = require('fs');
 const {exportToStructureDefinitions} = require('../../lib/structdef/export');
-const {Namespace, Section, DataElement, Group, Value, CodeValue, QuantifiedValue, PrimitiveIdentifier, Identifier} = require('../../lib/models');
+const {Namespace, Section, DataElement, Group, Value, CodeValue, RefValue, QuantifiedValue, PrimitiveIdentifier, Identifier} = require('../../lib/models');
 
 describe('#exportToStructureDefinitions()', () => {
   it('should correctly export a simple entry', () => {
@@ -33,6 +33,17 @@ describe('#exportToStructureDefinitions()', () => {
     let coded = addCodedThing(ns);
     let section = new Section('test');
     section.addEntry(new QuantifiedValue(new Value(coded.identifier), 0, 1));
+    ns.addSection(section);
+    let structdef = exportToSingleStructDef(ns);
+    expect(structdef).to.eql(expectedStructDef);
+  });
+
+  it('should correctly export a reference entry', () => {
+    let expectedStructDef = importFixture('SimpleReference');
+    let ns = new Namespace('shr.test');
+    let ref = addSimpleReference(ns);
+    let section = new Section('test');
+    section.addEntry(new QuantifiedValue(new Value(ref.identifier), 0, 1));
     ns.addSection(section);
     let structdef = exportToSingleStructDef(ns);
     expect(structdef).to.eql(expectedStructDef);
@@ -114,6 +125,14 @@ function addCodedThing(ns) {
   let de = new DataElement(new Identifier(ns.namespace, 'Coded'));
   de.description = 'It is a coded thing';
   de.value = new CodeValue('http://standardhealthrecord.org/test/vs/Coded');
+  ns.addDefinition(de);
+  return de;
+}
+
+function addSimpleReference(ns) {
+  let de = new DataElement(new Identifier(ns.namespace, 'SimpleReference'));
+  de.description = 'It is a reference to a simple thing';
+  de.value = new RefValue(new Identifier(ns.namespace, 'Simple'));
   ns.addDefinition(de);
   return de;
 }
