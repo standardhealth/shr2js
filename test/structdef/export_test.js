@@ -114,6 +114,10 @@ function addGroupOfThings(ns, addSubElements=true) {
   gr.description = 'It is a group of things';
   gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
   gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Coded')), 0, 1));
+  let or = new OrValues();
+  or.addValue(new QuantifiedValue(new Value(new PrimitiveIdentifier('string')), 1, 1));
+  or.addValue(new QuantifiedValue(new Value(new PrimitiveIdentifier('boolean')), 1));
+  gr.addElement(new QuantifiedValue(or, 0, 2));
   gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Nest')), 0));
   ns.addDefinition(gr);
   if (addSubElements) {

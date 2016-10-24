@@ -86,6 +86,41 @@
         }
       },
       {
+        "id": "GroupOfThings.choice",
+        "path": "GroupOfThings.choice",
+        "min": 0,
+        "max": "2",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "GroupOfThings.choice.string",
+        "path": "GroupOfThings.choice.string",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "id": "GroupOfThings.choice.boolean",
+        "path": "GroupOfThings.choice.boolean",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "isSummary": true
+      },
+      {
         "id": "GroupOfThings.nest",
         "path": "GroupOfThings.nest",
         "definition": "It is a nest",
@@ -190,6 +225,41 @@
             "reference": "http://standardhealthrecord.org/test/vs/Coded"
           }
         }
+      },
+      {
+        "id": "GroupOfThings.choice",
+        "path": "GroupOfThings.choice",
+        "min": 0,
+        "max": "2",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "GroupOfThings.choice.string",
+        "path": "GroupOfThings.choice.string",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "id": "GroupOfThings.choice.boolean",
+        "path": "GroupOfThings.choice.boolean",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "isSummary": true
       },
       {
         "id": "GroupOfThings.nest",
