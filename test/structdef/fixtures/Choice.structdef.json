@@ -1,0 +1,190 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Choice",
+  "text": {
+    "status": "generated"
+  },
+  "url": "http://standardhealthrecord.org/StructureDefinition/shr/test/Choice",
+  "identifier": [
+    {
+      "use": "usual",
+      "system": "http://standardhealthrecord.org",
+      "value": "shr.test.Choice"
+    }
+  ],
+  "name": "Choice",
+  "status": "draft",
+  "publisher": "Standard Health Record",
+  "description": "It is a thing with a choice",
+  "kind": "logical",
+  "abstract": false,
+  "type": "Element",
+  "snapshot": {
+    "element": [
+      {
+        "id": "Choice",
+        "path": "Choice",
+        "definition": "It is a thing with a choice",
+        "alias": "shr.test.Choice",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Choice.choice",
+        "path": "Choice.choice",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Choice.choice.string",
+        "path": "Choice.choice.string",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "id": "Choice.choice.code",
+        "path": "Choice.choice.code",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": "required",
+          "valueSetReference": {
+            "reference": "http://standardhealthrecord.org/test/vs/CodeChoice"
+          }
+        }
+      },
+      {
+        "id": "Choice.choice.coded",
+        "path": "Choice.choice.coded",
+        "definition": "It is a coded thing",
+        "alias": "shr.test.Coded",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Choice.choice.coded.value",
+        "path": "Choice.choice.coded.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": "required",
+          "valueSetReference": {
+            "reference": "http://standardhealthrecord.org/test/vs/Coded"
+          }
+        }
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "Choice",
+        "path": "Choice",
+        "definition": "It is a thing with a choice",
+        "alias": "shr.test.Choice",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Choice.choice",
+        "path": "Choice.choice",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Choice.choice.string",
+        "path": "Choice.choice.string",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "id": "Choice.choice.code",
+        "path": "Choice.choice.code",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": "required",
+          "valueSetReference": {
+            "reference": "http://standardhealthrecord.org/test/vs/CodeChoice"
+          }
+        }
+      },
+      {
+        "id": "Choice.choice.coded",
+        "path": "Choice.choice.coded",
+        "definition": "It is a coded thing",
+        "alias": "shr.test.Coded",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Choice.choice.coded.value",
+        "path": "Choice.choice.coded.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": "required",
+          "valueSetReference": {
+            "reference": "http://standardhealthrecord.org/test/vs/Coded"
+          }
+        }
+      }
+    ]
+  }
+}

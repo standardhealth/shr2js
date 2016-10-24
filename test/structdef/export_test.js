@@ -1,7 +1,7 @@
 const {expect} = require('chai');
 const fs = require('fs');
 const {exportToStructureDefinitions} = require('../../lib/structdef/export');
-const {Namespace, Section, DataElement, Group, Value, CodeValue, RefValue, QuantifiedValue, PrimitiveIdentifier, Identifier} = require('../../lib/models');
+const {Namespace, Section, DataElement, Group, Value, CodeValue, RefValue, OrValues, QuantifiedValue, PrimitiveIdentifier, Identifier} = require('../../lib/models');
 
 describe('#exportToStructureDefinitions()', () => {
   it('should correctly export a simple entry', () => {
@@ -81,6 +81,17 @@ describe('#exportToStructureDefinitions()', () => {
     let oak = addOakTree(ns);
     let section = new Section('test');
     section.addEntry(new QuantifiedValue(new Value(oak.identifier), 0, 1));
+    ns.addSection(section);
+    let structdef = exportToSingleStructDef(ns);
+    expect(structdef).to.eql(expectedStructDef);
+  });
+
+  it('should correctly export a choice', () => {
+    let expectedStructDef = importFixture('Choice');
+    let ns = new Namespace('shr.test');
+    let choice = addChoice(ns);
+    let section = new Section('test');
+    section.addEntry(new QuantifiedValue(new Value(choice.identifier), 0, 1));
     ns.addSection(section);
     let structdef = exportToSingleStructDef(ns);
     expect(structdef).to.eql(expectedStructDef);
@@ -174,6 +185,21 @@ function addRobin(ns) {
   de.value = new Value(new PrimitiveIdentifier('string'));
   ns.addDefinition(de);
   return de;
+}
+
+function addChoice(ns, addSubElements=true) {
+  let ch = new DataElement(new Identifier(ns.namespace, 'Choice'));
+  ch.description = 'It is a thing with a choice';
+  let or = new OrValues();
+  or.addValue(new Value(new PrimitiveIdentifier('string')));
+  or.addValue(new QuantifiedValue(new CodeValue('http://standardhealthrecord.org/test/vs/CodeChoice'), 0));
+  or.addValue(new QuantifiedValue(new Value(new Identifier('shr.test', 'Coded')), 1, 1));
+  ch.value = or;
+  ns.addDefinition(ch);
+  if (addSubElements) {
+    addCodedThing(ns);
+  }
+  return ch;
 }
 
 function exportToSingleStructDef(...namespace) {
