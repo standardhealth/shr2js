@@ -107,6 +107,18 @@ describe('#exportToStructureDefinitions()', () => {
     let structdef = exportToSingleStructDef(ns);
     expect(structdef).to.eql(expectedStructDef);
   });
+
+  it('should correctly export a group with name clashes', () => {
+    let expectedStructDef = importFixture('GroupPathClash');
+    let ns = new Namespace('shr.test');
+    let nsOther = new Namespace('shr.other');
+    let group = addGroupPathClash(ns, nsOther);
+    let section = new Section('test');
+    section.addEntry(new QuantifiedValue(new Value(group.identifier), 0, 1));
+    ns.addSection(section);
+    let structdef = exportToSingleStructDef(ns, nsOther);
+    expect(structdef).to.eql(expectedStructDef);
+  });
 });
 
 function addGroupOfThings(ns, addSubElements=true) {
@@ -124,6 +136,19 @@ function addGroupOfThings(ns, addSubElements=true) {
     addSimpleThing(ns);
     addCodedThing(ns);
     addNest(ns);
+  }
+  return gr;
+}
+
+function addGroupPathClash(ns, nsOther, addSubElements=true) {
+  let gr = new Group(new Identifier(ns.namespace, 'GroupPathClash'));
+  gr.description = 'It is a group of things with clashing names';
+  gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
+  gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.other', 'Simple')), 0, 1));
+  ns.addDefinition(gr);
+  if (addSubElements) {
+    addSimpleThing(ns);
+    addSimpleThing(nsOther);
   }
   return gr;
 }
