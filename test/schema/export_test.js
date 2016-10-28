@@ -1,14 +1,14 @@
 const {expect} = require('chai');
 const fs = require('fs');
 const {exportToSchemas} = require('../../lib/schema/export');
-const {Namespace, DataElement, Identifier, QuantifiedIdentifier, PrimitiveIdentifier} = require('../../lib/models');
+const {Namespace, DataElement, Group, Identifier, QuantifiedValue, PrimitiveIdentifier, Value, CodeValue, OrValues} = require('../../lib/models');
 
 describe('#exportToSchemas()', () => {
   it('should correctly export a simple data element', () => {
     let expectedSchema = importFixture('SimpleDataElement');
     let [ns, de] = createNameSpaceAndDE('shr.test', 'Simple');
     de.description = 'It is a simple data element';
-    de.addAnswer(new PrimitiveIdentifier('string'));
+    de.value = new Value(new PrimitiveIdentifier('string'));
     let schema = exportToSingleSchema(ns);
     expect(schema).to.eql(expectedSchema);
   });
@@ -17,8 +17,7 @@ describe('#exportToSchemas()', () => {
     let expectedSchema = importFixture('CodedDataElement');
     let [ns, de] = createNameSpaceAndDE('shr.test', 'Coded');
     de.description = 'It is a coded data element';
-    de.addAnswer(new PrimitiveIdentifier('code'));
-    de.valueset = 'http://standardhealthrecord.org/test/vs/Coded';
+    de.value = new CodeValue('http://standardhealthrecord.org/test/vs/Coded');
     let schema = exportToSingleSchema(ns);
     expect(schema).to.eql(expectedSchema);
   });
@@ -27,21 +26,25 @@ describe('#exportToSchemas()', () => {
     let expectedSchema = importFixture('ChoiceDataElement');
     let [ns, de] = createNameSpaceAndDE('shr.test', 'Choice');
     de.description = 'It is a data element with a choice';
-    de.addAnswer(new PrimitiveIdentifier('date'));
-    de.addAnswer(new Identifier('other.ns', 'Period'));
-    de.addAnswer(new Identifier('shr.test', 'Simple'));
+    let or = new OrValues();
+    or.addValue(new Value(new PrimitiveIdentifier('date')));
+    or.addValue(new Value(new Identifier('other.ns', 'Period')));
+    or.addValue(new Value(new Identifier('shr.test', 'Simple')));
+    de.value = or;
     let schema = exportToSingleSchema(ns);
     expect(schema).to.eql(expectedSchema);
   });
 
   it('should correctly export a group', () => {
     let expectedSchema = importFixture('GroupOfThingsDataElement');
-    let [ns, de] = createNameSpaceAndDE('shr.test', 'GroupOfThings');
+    let ns = new Namespace('shr.test');
+    let de = new Group(new Identifier('shr.test', 'GroupOfThings'));
+    ns.addDefinition(de);
     de.description = 'It is a group data element';
-    de.addComponent(new QuantifiedIdentifier(new Identifier('shr.test', 'Simple'), 0, 1));
-    de.addComponent(new QuantifiedIdentifier(new Identifier('shr.test', 'Coded'), 0));
-    de.addComponent(new QuantifiedIdentifier(new Identifier('shr.test', 'Simple'), 1));
-    de.addComponent(new QuantifiedIdentifier(new Identifier('other.ns', 'Thing'), 1, 1));
+    de.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Simple')), 0, 1));
+    de.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Coded')), 0));
+    de.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Choice')), 1));
+    de.addElement(new QuantifiedValue(new Value(new Identifier('other.ns', 'Thing')), 1, 1));
     let schema = exportToSingleSchema(ns);
     expect(schema).to.eql(expectedSchema);
   });
@@ -53,11 +56,11 @@ describe('#exportToSchemas()', () => {
                    'date', 'dateTime', 'instant', 'time']) {
       let de = new DataElement(new Identifier('shr.test', `${p}Element`));
       de.description = `It is a ${p} data element`;
-      de.addAnswer(new PrimitiveIdentifier(p));
-      ns.addElement(de);
+      de.value = new Value(new PrimitiveIdentifier(p));
+      ns.addDefinition(de);
     }
     let expectedSchemas = importFixture('primitives', '.json');
-    let schemas = exportToSchemas(ns);
+    let schemas = exportToSchemas([ns]);
     expect(schemas).to.have.length(16);
     expect(schemas).to.eql(expectedSchemas);
   });
@@ -66,12 +69,12 @@ describe('#exportToSchemas()', () => {
 function createNameSpaceAndDE(namespace, name) {
   let ns = new Namespace(namespace);
   let de = new DataElement(new Identifier(namespace, name));
-  ns.addElement(de);
+  ns.addDefinition(de);
   return [ns, de];
 }
 
 function exportToSingleSchema(namespace) {
-  let schemas = exportToSchemas(namespace);
+  let schemas = exportToSchemas([namespace]);
   expect(schemas).to.have.length(1);
   return schemas[0];
 }
