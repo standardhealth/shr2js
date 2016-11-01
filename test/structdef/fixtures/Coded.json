@@ -15,7 +15,7 @@
   "name": "Coded",
   "status": "draft",
   "publisher": "Standard Health Record",
-  "description": "It is a coded thing",
+  "description": "It is a coded element",
   "kind": "logical",
   "abstract": false,
   "type": "Element",
@@ -24,7 +24,7 @@
       {
         "id": "Coded",
         "path": "Coded",
-        "definition": "It is a coded thing",
+        "definition": "It is a coded element",
         "alias": "shr.test.Coded",
         "min": 0,
         "max": "*"
@@ -54,7 +54,7 @@
       {
         "id": "Coded",
         "path": "Coded",
-        "definition": "It is a coded thing",
+        "definition": "It is a coded element",
         "alias": "shr.test.Coded",
         "min": 0,
         "max": "*"

@@ -34,8 +34,8 @@ describe('#importFromFilePath()', () => {
   });
 
   it('should correctly import a group', () => {
-    let results = importFixture('GroupOfThingsDataElement');
-    let simple = expectAndGetSingleElement(results, 'shr.test', 'GroupOfThings');
+    let results = importFixture('GroupDataElement');
+    let simple = expectAndGetSingleElement(results, 'shr.test', 'Group');
     expect(simple.description).to.equal('It is a group data element');
     expect(simple.answers).to.be.empty;
     expect(simple.valueset).to.be.undefined;
@@ -43,7 +43,7 @@ describe('#importFromFilePath()', () => {
     expectComponent(simple, 0, 'shr.test', 'Simple', 0, 1);
     expectComponent(simple, 1, 'shr.test', 'Coded', 0);
     expectComponent(simple, 2, 'shr.test', 'Simple', 1);
-    expectComponent(simple, 3, 'other.ns', 'Thing', 1, 1);
+    expectComponent(simple, 3, 'other.ns', 'Element', 1, 1);
   });
 
   it('should correctly import multiple elements in a single namespace', () => {

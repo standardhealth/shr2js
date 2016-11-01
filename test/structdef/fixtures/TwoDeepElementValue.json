@@ -1,0 +1,122 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "TwoDeepElementValue",
+  "text": {
+    "status": "generated"
+  },
+  "url": "http://standardhealthrecord.org/StructureDefinition/shr/test/TwoDeepElementValue",
+  "identifier": [
+    {
+      "use": "usual",
+      "system": "http://standardhealthrecord.org",
+      "value": "shr.test.TwoDeepElementValue"
+    }
+  ],
+  "name": "TwoDeepElementValue",
+  "status": "draft",
+  "publisher": "Standard Health Record",
+  "description": "It is an element with a two-deep element value",
+  "kind": "logical",
+  "abstract": false,
+  "type": "Element",
+  "snapshot": {
+    "element": [
+      {
+        "id": "TwoDeepElementValue",
+        "path": "TwoDeepElementValue",
+        "definition": "It is an element with a two-deep element value",
+        "alias": "shr.test.TwoDeepElementValue",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "TwoDeepElementValue.elementValue",
+        "path": "TwoDeepElementValue.elementValue",
+        "definition": "It is an element with an element value",
+        "alias": "shr.test.ElementValue",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "TwoDeepElementValue.elementValue.simple",
+        "path": "TwoDeepElementValue.elementValue.simple",
+        "definition": "It is a simple element",
+        "alias": "shr.test.Simple",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "TwoDeepElementValue.elementValue.simple.value",
+        "path": "TwoDeepElementValue.elementValue.simple.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "TwoDeepElementValue",
+        "path": "TwoDeepElementValue",
+        "definition": "It is an element with a two-deep element value",
+        "alias": "shr.test.TwoDeepElementValue",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "TwoDeepElementValue.elementValue",
+        "path": "TwoDeepElementValue.elementValue",
+        "definition": "It is an element with an element value",
+        "alias": "shr.test.ElementValue",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "TwoDeepElementValue.elementValue.simple",
+        "path": "TwoDeepElementValue.elementValue.simple",
+        "definition": "It is a simple element",
+        "alias": "shr.test.Simple",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "TwoDeepElementValue.elementValue.simple.value",
+        "path": "TwoDeepElementValue.elementValue.simple.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      }
+    ]
+  }
+}

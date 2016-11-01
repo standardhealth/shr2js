@@ -15,7 +15,7 @@
   "name": "GroupPathClash",
   "status": "draft",
   "publisher": "Standard Health Record",
-  "description": "It is a group of things with clashing names",
+  "description": "It is a group of elements with clashing names",
   "kind": "logical",
   "abstract": false,
   "type": "Element",
@@ -24,7 +24,7 @@
       {
         "id": "GroupPathClash",
         "path": "GroupPathClash",
-        "definition": "It is a group of things with clashing names",
+        "definition": "It is a group of elements with clashing names",
         "alias": "shr.test.GroupPathClash",
         "min": 0,
         "max": "*"
@@ -32,7 +32,7 @@
       {
         "id": "GroupPathClash.simple",
         "path": "GroupPathClash.simple",
-        "definition": "It is a simple thing",
+        "definition": "It is a simple element",
         "alias": "shr.test.Simple",
         "min": 1,
         "max": "1",
@@ -57,8 +57,8 @@
       {
         "id": "GroupPathClash.simple2",
         "path": "GroupPathClash.simple2",
-        "definition": "It is a simple thing",
-        "alias": "shr.other.Simple",
+        "definition": "It is a simple element",
+        "alias": "shr.other.test.Simple",
         "min": 0,
         "max": "1",
         "type": [
@@ -86,7 +86,7 @@
       {
         "id": "GroupPathClash",
         "path": "GroupPathClash",
-        "definition": "It is a group of things with clashing names",
+        "definition": "It is a group of elements with clashing names",
         "alias": "shr.test.GroupPathClash",
         "min": 0,
         "max": "*"
@@ -94,7 +94,7 @@
       {
         "id": "GroupPathClash.simple",
         "path": "GroupPathClash.simple",
-        "definition": "It is a simple thing",
+        "definition": "It is a simple element",
         "alias": "shr.test.Simple",
         "min": 1,
         "max": "1",
@@ -119,8 +119,8 @@
       {
         "id": "GroupPathClash.simple2",
         "path": "GroupPathClash.simple2",
-        "definition": "It is a simple thing",
-        "alias": "shr.other.Simple",
+        "definition": "It is a simple element",
+        "alias": "shr.other.test.Simple",
         "min": 0,
         "max": "1",
         "type": [

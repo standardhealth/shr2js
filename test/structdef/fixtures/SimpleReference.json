@@ -15,7 +15,7 @@
   "name": "SimpleReference",
   "status": "draft",
   "publisher": "Standard Health Record",
-  "description": "It is a reference to a simple thing",
+  "description": "It is a reference to a simple element",
   "kind": "logical",
   "abstract": false,
   "type": "Element",
@@ -24,7 +24,7 @@
       {
         "id": "SimpleReference",
         "path": "SimpleReference",
-        "definition": "It is a reference to a simple thing",
+        "definition": "It is a reference to a simple element",
         "alias": "shr.test.SimpleReference",
         "min": 0,
         "max": "*"
@@ -49,7 +49,7 @@
       {
         "id": "SimpleReference",
         "path": "SimpleReference",
-        "definition": "It is a reference to a simple thing",
+        "definition": "It is a reference to a simple element",
         "alias": "shr.test.SimpleReference",
         "min": 0,
         "max": "*"

@@ -1,0 +1,31 @@
+[
+  {
+    "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
+    "id": "http://standardhealthrecord.org/schemas/shr/test/Choice.schema.json",
+    "description": "It is an element with a choice",
+    "oneOf": [
+      {
+        "type": "string"
+      },
+      {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "[^\\s]+([\\s]?[^\\s]+)*",
+          "valueset": "http://standardhealthrecord.org/test/vs/CodeChoice"
+        }
+      },
+      {
+        "$ref": "http://standardhealthrecord.org/schemas/shr/test/Coded.schema.json"
+      }
+    ]
+  },
+  {
+    "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
+    "id": "http://standardhealthrecord.org/schemas/shr/test/Coded.schema.json",
+    "description": "It is a coded element",
+    "type": "string",
+    "pattern": "[^\\s]+([\\s]?[^\\s]+)*",
+    "valueset": "http://standardhealthrecord.org/test/vs/Coded"
+  }
+]

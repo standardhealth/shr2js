@@ -15,7 +15,7 @@
   "name": "Choice",
   "status": "draft",
   "publisher": "Standard Health Record",
-  "description": "It is a thing with a choice",
+  "description": "It is an element with a choice",
   "kind": "logical",
   "abstract": false,
   "type": "Element",
@@ -24,7 +24,7 @@
       {
         "id": "Choice",
         "path": "Choice",
-        "definition": "It is a thing with a choice",
+        "definition": "It is an element with a choice",
         "alias": "shr.test.Choice",
         "min": 0,
         "max": "*"
@@ -73,7 +73,7 @@
       {
         "id": "Choice.choice.coded",
         "path": "Choice.choice.coded",
-        "definition": "It is a coded thing",
+        "definition": "It is a coded element",
         "alias": "shr.test.Coded",
         "min": 0,
         "max": "1",
@@ -108,7 +108,7 @@
       {
         "id": "Choice",
         "path": "Choice",
-        "definition": "It is a thing with a choice",
+        "definition": "It is an element with a choice",
         "alias": "shr.test.Choice",
         "min": 0,
         "max": "*"
@@ -157,7 +157,7 @@
       {
         "id": "Choice.choice.coded",
         "path": "Choice.choice.coded",
-        "definition": "It is a coded thing",
+        "definition": "It is a coded element",
         "alias": "shr.test.Coded",
         "min": 0,
         "max": "1",

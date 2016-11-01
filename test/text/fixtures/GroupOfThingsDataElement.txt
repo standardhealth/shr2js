@@ -1,8 +1,8 @@
 Namespace:    shr.test
 
-Group:        GroupOfThings
+Group:        Group
 Description:  "It is a group data element"
 0..1    Simple
 0..*    Coded
 1..*    Simple
-1..1    other.ns.Thing
+1..1    other.ns.Element

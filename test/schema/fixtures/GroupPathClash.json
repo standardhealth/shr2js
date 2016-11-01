@@ -1,0 +1,29 @@
+[
+  {
+    "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
+    "id": "http://standardhealthrecord.org/schemas/shr/test/GroupPathClash.schema.json",
+    "description": "It is a group of elements with clashing names",
+    "type": "object",
+    "properties": {
+      "shr.test.Simple": {
+        "$ref": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json"
+      },
+      "shr.other.test.Simple": {
+        "$ref": "http://standardhealthrecord.org/schemas/shr/other/test/Simple.schema.json"
+      }
+    },
+    "required": ["shr.test.Simple"]
+  },
+  {
+    "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
+    "id": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json",
+    "description": "It is a simple element",
+    "type": "string"
+  },
+  {
+    "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
+    "id": "http://standardhealthrecord.org/schemas/shr/other/test/Simple.schema.json",
+    "description": "It is a simple element",
+    "type": "string"
+  }
+]

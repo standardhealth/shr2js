@@ -4,18 +4,18 @@
   "text": {
     "status": "generated"
   },
-  "url": "http://standardhealthrecord.org/StructureDefinition/shr/test/Simple",
+  "url": "http://standardhealthrecord.org/StructureDefinition/shr/other/test/Simple",
   "identifier": [
     {
       "use": "usual",
       "system": "http://standardhealthrecord.org",
-      "value": "shr.test.Simple"
+      "value": "shr.other.test.Simple"
     }
   ],
   "name": "Simple",
   "status": "draft",
   "publisher": "Standard Health Record",
-  "description": "It is a simple thing",
+  "description": "It is a simple element",
   "kind": "logical",
   "abstract": false,
   "type": "Element",
@@ -24,8 +24,8 @@
       {
         "id": "Simple",
         "path": "Simple",
-        "definition": "It is a simple thing",
-        "alias": "shr.test.Simple",
+        "definition": "It is a simple element",
+        "alias": "shr.other.test.Simple",
         "min": 0,
         "max": "*"
       },
@@ -48,8 +48,8 @@
       {
         "id": "Simple",
         "path": "Simple",
-        "definition": "It is a simple thing",
-        "alias": "shr.test.Simple",
+        "definition": "It is a simple element",
+        "alias": "shr.other.test.Simple",
         "min": 0,
         "max": "*"
       },
