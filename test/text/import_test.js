@@ -1,23 +1,20 @@
 const {expect} = require('chai');
 const {importFromFilePath} = require('../../lib/text/import');
-const {Namespace, DataElement, Group} = require('../../lib/models');
+const {Namespace, DataElement, Group, Value, CodeValue, PrimitiveIdentifier} = require('../../lib/models');
 
 describe('#importFromFilePath()', () => {
   it('should correctly import a simple data element', () => {
-    let results = importFixture('simpleDataElement');
-    let simple = expectAndGetSingleElement(results, 'shr.test', 'Simple');
+    const results = importFixture('simpleDataElement');
+    const simple = expectAndGetSingleElement(results, 'shr.test', 'Simple');
     expect(simple.description).to.equal('It is a simple data element');
-    expectValue(simple, 'primitive', 'string');
-    expect(simple.valueset).to.be.undefined;
-    expect(simple.components).to.be.empty;
+    expectPrimitiveValue(simple.value, 'string');
   });
 
   it('should correctly import a coded data element', () => {
-    let results = importFixture('CodedDataElement');
-    let coded = expectAndGetSingleElement(results, 'shr.test', 'Coded');
+    const results = importFixture('CodedDataElement');
+    const coded = expectAndGetSingleElement(results, 'shr.test', 'Coded');
     expect(coded.description).to.equal('It is a coded data element');
-    expect(coded.valueset).to.equal('http://standardhealthrecord.org/test/vs/Coded');
-    expect(coded.components).to.be.empty;
+    expectCodeValue(coded.value, 'http://standardhealthrecord.org/test/vs/Coded');
   });
 
  /* it('should correctly import a choice data element', () => {
@@ -33,98 +30,85 @@ describe('#importFromFilePath()', () => {
   });*/
 
   it('should correctly import a group', () => {
-    let results = importFixture('GroupOfThingsDataElement');
-    let simple = expectAndGetSingleElement(results, 'shr.test', 'GroupOfThings', Group);
+    const results = importFixture('GroupOfThingsDataElement');
+    const simple = expectAndGetSingleElement(results, 'shr.test', 'GroupOfThings', Group);
     expect(simple.description).to.equal('It is a group data element');
-    expect(simple.values).to.be.empty;
-    expect(simple.valueset).to.be.undefined;
     expect(simple.elements).to.have.length(4);
-    expectComponent(simple, 0, 'shr.test', 'Simple', 0, 1);
-    expectComponent(simple, 1, 'shr.test', 'Coded', 0);
-    expectComponent(simple, 2, 'shr.test', 'Simple', 1);
-    expectComponent(simple, 3, 'other.ns', 'Thing', 1, 1);
+    expectGroupElement(simple, 0, 'shr.test', 'Simple', 0, 1);
+    expectGroupElement(simple, 1, 'shr.test', 'Coded', 0);
+    expectGroupElement(simple, 2, 'shr.test', 'Simple', 1);
+    expectGroupElement(simple, 3, 'other.ns', 'Thing', 1, 1);
   });
 
   it('should correctly import multiple elements in a single namespace', () => {
-    let results = importFixture('MultipleElements');
+    const results = importFixture('MultipleElements');
     expect(results).to.have.length(1);
-    let ns = expectAndGetNamespace(results, 0, 'shr.test');
+    const ns = expectAndGetNamespace(results, 0, 'shr.test');
 
-    let simple = expectAndGetElement(ns, 0, 'SimpleDate');
+    const simple = expectAndGetElement(ns, 0, 'SimpleDate');
     expect(simple.description).to.equal('It is a simple date data element');
-    expectValue(simple, 'primitive', 'date');
-    expect(simple.valueset).to.be.undefined;
-    expect(simple.components).to.be.empty;
+    expectPrimitiveValue(simple.value, 'date');
 
-    let coded = expectAndGetElement(ns, 1, 'Coded');
+    const coded = expectAndGetElement(ns, 1, 'Coded');
     expect(coded.description).to.equal('It is a coded data element');
-    expect(coded.valueset).to.equal('http://standardhealthrecord.org/test/vs/Coded');
-    expect(coded.components).to.be.empty;
+    expectCodeValue(coded.value, 'http://standardhealthrecord.org/test/vs/Coded');
   });
 });
 
 function expectAndGetNamespace(results, namespaceIndex, expectedNamespace) {
-  let ns = results[namespaceIndex];
+  const ns = results[namespaceIndex];
   expect(ns).to.be.instanceof(Namespace);
   expect(ns.namespace).to.equal(expectedNamespace);
-
   return ns;
 }
 
 function expectAndGetElement(namespace, defIndex, expectedName, expectedClass=DataElement) {
-  let def = namespace.definitions[defIndex];
+  const def = namespace.definitions[defIndex];
   expect(def).to.be.instanceof(expectedClass);
   expect(def.identifier.namespace).to.equal(namespace.namespace);
   expect(def.identifier.name).to.equal(expectedName);
-
   return def;
 }
 
 function expectAndGetSingleElement(results, expectedNamespace, expectedName, expectedClass=DataElement) {
   expect(results).to.have.length(1);
-  let ns = expectAndGetNamespace(results, 0, expectedNamespace);
+  const ns = expectAndGetNamespace(results, 0, expectedNamespace);
   return expectAndGetElement(ns, 0, expectedName, expectedClass);
 }
 
-function expectValue(def, expectedNamespace, expectedName) {
-  expect(def.value.namespace).to.equal(expectedNamespace);
-  expect(def.value.name).to.equal(expectedName);
+function expectValue(value, expectedNamespace, expectedName) {
+  expect(value).to.be.instanceof(Value);
+  expect(value.identifier.namespace).to.equal(expectedNamespace);
+  expect(value.identifier.name).to.equal(expectedName);
 }
 
-function expectComponent(element, componentIndex, expectedNamespace, expectedName, expectedMin, expectedMax) {
-  var elementValue = element.elements[componentIndex].value;
-  var elementNS = element.identifier.namespace;
-  var elementMax = element.elements[componentIndex].max;
-  var elementMin = element.elements[componentIndex].min;
+function expectPrimitiveValue(value, expectedName) {
+  expect(value).to.be.instanceof(Value);
+  expect(value.identifier).to.be.instanceof(PrimitiveIdentifier);
+  expect(value.identifier.namespace).to.equal('primitive');
+  expect(value.identifier.name).to.equal(expectedName);
+}
 
-  if (elementValue.lastIndexOf('.') != -1) {
-    elementNS = getCorrectedNamespace(elementValue);
-    elementValue = getCorrectedValue(elementValue);
-  }
+function expectCodeValue(value, expectedValueset) {
+  expect(value).to.be.instanceof(CodeValue);
+  expect(value.identifier).to.be.instanceof(PrimitiveIdentifier);
+  expect(value.identifier.namespace).to.equal('primitive');
+  expect(value.identifier.name).to.equal('code');
+  expect(value.valueset).to.equal('http://standardhealthrecord.org/test/vs/Coded');
+}
 
-  expect(elementNS).to.equal(expectedNamespace);
-  expect(elementValue).to.equal(expectedName);
-  expect(elementMin).to.equal(expectedMin);
-  if (typeof expectedMax != 'undefined') {
-    expect(elementMax).to.equal(expectedMax);
-    expect(element.elements[componentIndex].isMaxUnbounded()).to.be.false;
+function expectGroupElement(group, componentIndex, expectedNamespace, expectedName, expectedMin, expectedMax) {
+  const element = group.elements[componentIndex];
+
+  expectValue(element.value, expectedNamespace, expectedName);
+  expect(element.min).to.equal(expectedMin);
+  if (typeof element.max != 'undefined') {
+    expect(element.max).to.equal(expectedMax);
+    expect(element.isMaxUnbounded()).to.be.false;
   } else {
-    expect(elementMax).to.be.undefined;
-    expect(element.elements[componentIndex].isMaxUnbounded()).to.be.true;
+    expect(element.max).to.be.undefined;
+    expect(element.isMaxUnbounded()).to.be.true;
   }
-}
-/* Use this if you have a dot separated namespace in QuantifiedValue */
-function getCorrectedNamespace(fqname) {
-  var index = fqname.lastIndexOf('.');
-  correctedNS = fqname.slice(0, index);
-  return correctedNS;
-}
-
-/* Use this if you have a dot separated namespace in QuantifiedValue */
-function getCorrectedValue(fqname) {
-  var index = fqname.lastIndexOf('.');
-  correctedValue = fqname.slice(index + 1);
-  return correctedValue;
 }
 
 function importFixture(name) {
