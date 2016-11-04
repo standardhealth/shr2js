@@ -1,0 +1,72 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "SimpleReference",
+  "text": {
+    "status": "generated"
+  },
+  "url": "http://standardhealthrecord.org/StructureDefinition/shr/test/SimpleReference",
+  "identifier": [
+    {
+      "use": "usual",
+      "system": "http://standardhealthrecord.org",
+      "value": "shr.test.SimpleReference"
+    }
+  ],
+  "name": "SimpleReference",
+  "status": "draft",
+  "publisher": "Standard Health Record",
+  "description": "It is a reference to a simple element",
+  "kind": "logical",
+  "abstract": false,
+  "type": "Element",
+  "snapshot": {
+    "element": [
+      {
+        "id": "SimpleReference",
+        "path": "SimpleReference",
+        "definition": "It is a reference to a simple element",
+        "alias": "shr.test.SimpleReference",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "SimpleReference.value",
+        "path": "SimpleReference.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": "http://standardhealthrecord.org/StructureDefinition/shr/test/Simple"
+          }
+        ],
+        "isSummary": true
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "SimpleReference",
+        "path": "SimpleReference",
+        "definition": "It is a reference to a simple element",
+        "alias": "shr.test.SimpleReference",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "SimpleReference.value",
+        "path": "SimpleReference.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": "http://standardhealthrecord.org/StructureDefinition/shr/test/Simple"
+          }
+        ],
+        "isSummary": true
+      }
+    ]
+  }
+}

@@ -60,8 +60,8 @@ describe('#importFromFilePath()', () => {
   });
 
   it('should correctly import a group', () => {
-    const results = importFixture('GroupOfThingsDataElement');
-    const simple = expectAndGetSingleElement(results, 'shr.test', 'GroupOfThings', Group);
+    const results = importFixture('GroupDataElement');
+    const simple = expectAndGetSingleElement(results, 'shr.test', 'SimpleGroup', Group);
     expect(simple.description).to.equal('It is a group data element');
     expect(simple.elements).to.have.length(4);
     expectGroupElement(simple, 0, 'shr.test', 'Simple', 0, 1);
