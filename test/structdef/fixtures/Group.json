@@ -16,6 +16,16 @@
   "status": "draft",
   "publisher": "Standard Health Record",
   "description": "It is a group of elements",
+  "code": [
+    {
+      "system": "http://foo.org",
+      "code": "bar"
+    },
+    {
+      "system": "http://boo.org",
+      "code": "far"
+    }
+  ],
   "kind": "logical",
   "abstract": false,
   "type": "Element",
@@ -25,7 +35,17 @@
         "id": "Group",
         "path": "Group",
         "definition": "It is a group of elements",
-        "alias": "shr.test.Group",
+        "code": [
+        {
+          "system": "http://foo.org",
+          "code": "bar"
+        },
+        {
+          "system": "http://boo.org",
+          "code": "far"
+        }
+      ],
+      "alias": "shr.test.Group",
         "min": 0,
         "max": "*"
       },
@@ -33,6 +53,12 @@
         "id": "Group.simple",
         "path": "Group.simple",
         "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
         "alias": "shr.test.Simple",
         "min": 1,
         "max": "1",
@@ -100,6 +126,12 @@
         "id": "Group.choice.simple",
         "path": "Group.choice.simple",
         "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
         "alias": "shr.other.test.Simple",
         "min": 0,
         "max": "1",
@@ -138,6 +170,12 @@
         "id": "Group.choice.foreignElementValue.simple",
         "path": "Group.choice.foreignElementValue.simple",
         "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
         "alias": "shr.other.test.Simple",
         "min": 1,
         "max": "1",
@@ -176,6 +214,12 @@
         "id": "Group.elementValue.simple",
         "path": "Group.elementValue.simple",
         "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
         "alias": "shr.test.Simple",
         "min": 1,
         "max": "1",
@@ -205,6 +249,16 @@
         "id": "Group",
         "path": "Group",
         "definition": "It is a group of elements",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          },
+          {
+            "system": "http://boo.org",
+            "code": "far"
+          }
+        ],
         "alias": "shr.test.Group",
         "min": 0,
         "max": "*"
@@ -213,6 +267,12 @@
         "id": "Group.simple",
         "path": "Group.simple",
         "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
         "alias": "shr.test.Simple",
         "min": 1,
         "max": "1",
@@ -280,6 +340,12 @@
         "id": "Group.choice.simple",
         "path": "Group.choice.simple",
         "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
         "alias": "shr.other.test.Simple",
         "min": 0,
         "max": "1",
@@ -318,6 +384,12 @@
         "id": "Group.choice.foreignElementValue.simple",
         "path": "Group.choice.foreignElementValue.simple",
         "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
         "alias": "shr.other.test.Simple",
         "min": 1,
         "max": "1",
@@ -356,6 +428,12 @@
         "id": "Group.elementValue.simple",
         "path": "Group.elementValue.simple",
         "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
         "alias": "shr.test.Simple",
         "min": 1,
         "max": "1",

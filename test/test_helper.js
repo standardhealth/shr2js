@@ -1,5 +1,5 @@
 const {expect} = require('chai');
-const {Namespace, Section, DataElement, Group, Value, CodeValue, RefValue, OrValues, QuantifiedValue, PrimitiveIdentifier, Identifier} = require('../lib/models');
+const {Namespace, Section, DataElement, Concept, Group, Value, CodeValue, RefValue, OrValues, QuantifiedValue, PrimitiveIdentifier, Identifier} = require('../lib/models');
 
 function commonTests(expectedFn, exportFn) {
   return () => {
@@ -125,6 +125,8 @@ function commonTests(expectedFn, exportFn) {
 function addGroup(ns, otherNS, addSubElements=true) {
   let gr = new Group(new Identifier(ns.namespace, 'Group'));
   gr.description = 'It is a group of elements';
+  gr.addConcept(new Concept('http://foo.org', 'bar'));
+  gr.addConcept(new Concept('http://boo.org', 'far'));
   gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
   gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Coded')), 0, 1));
   let or = new OrValues();
@@ -159,6 +161,7 @@ function addGroupPathClash(ns, nsOther, addSubElements=true) {
 function addSimpleElement(ns) {
   let de = new DataElement(new Identifier(ns.namespace, 'Simple'));
   de.description = 'It is a simple element';
+  de.addConcept(new Concept('http://foo.org', 'bar'));
   de.value = new Value(new PrimitiveIdentifier('string'));
   ns.addDefinition(de);
   return de;

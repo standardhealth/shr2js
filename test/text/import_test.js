@@ -6,6 +6,8 @@ describe('#importFromFilePath()', () => {
   it('should correctly import a simple data element', () => {
     const results = importFixture('simpleDataElement');
     const simple = expectAndGetSingleElement(results, 'shr.test', 'Simple');
+    expect(simple.concepts).to.have.length(1);
+    expectConcept(simple.concepts[0], 'http://foo.org', 'bar');
     expect(simple.description).to.equal('It is a simple data element');
     expectPrimitiveValue(simple.value, 'string');
   });
@@ -62,6 +64,10 @@ describe('#importFromFilePath()', () => {
   it('should correctly import a group', () => {
     const results = importFixture('GroupDataElement');
     const simple = expectAndGetSingleElement(results, 'shr.test', 'SimpleGroup', Group);
+    expect(simple.concepts).to.have.length(3);
+    expectConcept(simple.concepts[0], 'http://foo.org', 'bar');
+    expectConcept(simple.concepts[1], 'http://boo.org', 'far');
+    expectConcept(simple.concepts[2], 'ZOO', 'bear');
     expect(simple.description).to.equal('It is a group data element');
     expect(simple.elements).to.have.length(4);
     expectGroupElement(simple, 0, 'shr.test', 'Simple', 0, 1);
@@ -183,6 +189,11 @@ function expectSectionEntry(section, sectionIndex, expectedNamespace, expectedNa
   const entry = section.entries[sectionIndex];
   expectMinMax(entry, expectedMin, expectedMax);
   expectValue(entry.value, expectedNamespace, expectedName);
+}
+
+function expectConcept(concept, codesystem, code) {
+  expect(concept.codesystem).equals(codesystem);
+  expect(concept.code).equals(code);
 }
 
 function importFixture(name) {
