@@ -1,0 +1,460 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Group",
+  "text": {
+    "status": "generated"
+  },
+  "url": "http://standardhealthrecord.org/StructureDefinition/shr/test/Group",
+  "identifier": [
+    {
+      "use": "usual",
+      "system": "http://standardhealthrecord.org",
+      "value": "shr.test.Group"
+    }
+  ],
+  "name": "Group",
+  "status": "draft",
+  "publisher": "Standard Health Record",
+  "description": "It is a group of elements",
+  "code": [
+    {
+      "system": "http://foo.org",
+      "code": "bar"
+    },
+    {
+      "system": "http://boo.org",
+      "code": "far"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "Element",
+  "snapshot": {
+    "element": [
+      {
+        "id": "Group",
+        "path": "Group",
+        "definition": "It is a group of elements",
+        "code": [
+        {
+          "system": "http://foo.org",
+          "code": "bar"
+        },
+        {
+          "system": "http://boo.org",
+          "code": "far"
+        }
+      ],
+      "alias": "shr.test.Group",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Group.simple",
+        "path": "Group.simple",
+        "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
+        "alias": "shr.test.Simple",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.simple.value",
+        "path": "Group.simple.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "id": "Group.coded",
+        "path": "Group.coded",
+        "definition": "It is a coded element",
+        "alias": "shr.test.Coded",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.coded.value",
+        "path": "Group.coded.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": "required",
+          "valueSetReference": {
+            "reference": "http://standardhealthrecord.org/test/vs/Coded"
+          }
+        }
+      },
+      {
+        "id": "Group.choice",
+        "path": "Group.choice",
+        "min": 0,
+        "max": "2",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.choice.simple",
+        "path": "Group.choice.simple",
+        "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
+        "alias": "shr.other.test.Simple",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.choice.simple.value",
+        "path": "Group.choice.simple.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "id": "Group.choice.foreignElementValue",
+        "path": "Group.choice.foreignElementValue",
+        "definition": "It is an element with a foreign element value",
+        "alias": "shr.test.ForeignElementValue",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.choice.foreignElementValue.simple",
+        "path": "Group.choice.foreignElementValue.simple",
+        "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
+        "alias": "shr.other.test.Simple",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.choice.foreignElementValue.simple.value",
+        "path": "Group.choice.foreignElementValue.simple.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "id": "Group.elementValue",
+        "path": "Group.elementValue",
+        "definition": "It is an element with an element value",
+        "alias": "shr.test.ElementValue",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.elementValue.simple",
+        "path": "Group.elementValue.simple",
+        "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
+        "alias": "shr.test.Simple",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.elementValue.simple.value",
+        "path": "Group.elementValue.simple.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "Group",
+        "path": "Group",
+        "definition": "It is a group of elements",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          },
+          {
+            "system": "http://boo.org",
+            "code": "far"
+          }
+        ],
+        "alias": "shr.test.Group",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Group.simple",
+        "path": "Group.simple",
+        "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
+        "alias": "shr.test.Simple",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.simple.value",
+        "path": "Group.simple.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "id": "Group.coded",
+        "path": "Group.coded",
+        "definition": "It is a coded element",
+        "alias": "shr.test.Coded",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.coded.value",
+        "path": "Group.coded.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": "required",
+          "valueSetReference": {
+            "reference": "http://standardhealthrecord.org/test/vs/Coded"
+          }
+        }
+      },
+      {
+        "id": "Group.choice",
+        "path": "Group.choice",
+        "min": 0,
+        "max": "2",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.choice.simple",
+        "path": "Group.choice.simple",
+        "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
+        "alias": "shr.other.test.Simple",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.choice.simple.value",
+        "path": "Group.choice.simple.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "id": "Group.choice.foreignElementValue",
+        "path": "Group.choice.foreignElementValue",
+        "definition": "It is an element with a foreign element value",
+        "alias": "shr.test.ForeignElementValue",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.choice.foreignElementValue.simple",
+        "path": "Group.choice.foreignElementValue.simple",
+        "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
+        "alias": "shr.other.test.Simple",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.choice.foreignElementValue.simple.value",
+        "path": "Group.choice.foreignElementValue.simple.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "id": "Group.elementValue",
+        "path": "Group.elementValue",
+        "definition": "It is an element with an element value",
+        "alias": "shr.test.ElementValue",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.elementValue.simple",
+        "path": "Group.elementValue.simple",
+        "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
+        "alias": "shr.test.Simple",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "Group.elementValue.simple.value",
+        "path": "Group.elementValue.simple.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      }
+    ]
+  }
+}

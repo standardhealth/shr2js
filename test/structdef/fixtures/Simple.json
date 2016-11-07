@@ -1,0 +1,88 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Simple",
+  "text": {
+    "status": "generated"
+  },
+  "url": "http://standardhealthrecord.org/StructureDefinition/shr/test/Simple",
+  "identifier": [
+    {
+      "use": "usual",
+      "system": "http://standardhealthrecord.org",
+      "value": "shr.test.Simple"
+    }
+  ],
+  "name": "Simple",
+  "status": "draft",
+  "publisher": "Standard Health Record",
+  "description": "It is a simple element",
+  "code": [
+    {
+      "system": "http://foo.org",
+      "code": "bar"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "Element",
+  "snapshot": {
+    "element": [
+      {
+        "id": "Simple",
+        "path": "Simple",
+        "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
+        "alias": "shr.test.Simple",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Simple.value",
+        "path": "Simple.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "Simple",
+        "path": "Simple",
+        "definition": "It is a simple element",
+        "code": [
+          {
+            "system": "http://foo.org",
+            "code": "bar"
+          }
+        ],
+        "alias": "shr.test.Simple",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Simple.value",
+        "path": "Simple.value",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true
+      }
+    ]
+  }
+}
