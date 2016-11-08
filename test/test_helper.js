@@ -1,14 +1,11 @@
 const {expect} = require('chai');
-const {Namespace, Section, DataElement, Concept, Group, Value, CodeValue, RefValue, OrValues, QuantifiedValue, PrimitiveIdentifier, Identifier} = require('../lib/models');
+const {Namespace, DataElement, Concept, Group, Value, CodeFromValueSetValue, RefValue, OrValues, QuantifiedValue, PrimitiveIdentifier, Identifier} = require('../lib/models');
 
 function commonTests(expectedFn, exportFn) {
   return () => {
     it('should correctly export a simple entry', () => {
       const ns = new Namespace('shr.test');
-      const simple = addSimpleElement(ns);
-      const section = new Section('test');
-      section.addEntry(new QuantifiedValue(new Value(simple.identifier), 0, 1));
-      ns.addSection(section);
+      addSimpleElement(ns);
       const actual = exportFn(ns);
       const expected = expectedFn('Simple');
       expect(actual).to.eql(expected);
@@ -16,22 +13,15 @@ function commonTests(expectedFn, exportFn) {
 
     it('should correctly export a simple entry in a different namespace', () => {
       const otherNS = new Namespace('shr.other.test');
-      const simple = addSimpleElement(otherNS);
-      const section = new Section('test');
-      section.addEntry(new QuantifiedValue(new Value(simple.identifier), 0, 1));
-      const ns = new Namespace('shr.test');
-      ns.addSection(section);
-      const actual = exportFn(ns, otherNS);
+      addSimpleElement(otherNS);
+      const actual = exportFn(otherNS);
       const expected = expectedFn('ForeignSimple');
       expect(actual).to.eql(expected);
     });
 
     it('should correctly export a coded entry', () => {
       const ns = new Namespace('shr.test');
-      const coded = addCodedElement(ns);
-      const section = new Section('test');
-      section.addEntry(new QuantifiedValue(new Value(coded.identifier), 0, 1));
-      ns.addSection(section);
+      addCodedElement(ns);
       const actual = exportFn(ns);
       const expected = expectedFn('Coded');
       expect(actual).to.eql(expected);
@@ -39,10 +29,7 @@ function commonTests(expectedFn, exportFn) {
 
     it('should correctly export a reference entry', () => {
       const ns = new Namespace('shr.test');
-      const ref = addSimpleReference(ns);
-      const section = new Section('test');
-      section.addEntry(new QuantifiedValue(new RefValue(ref.identifier), 0, 1));
-      ns.addSection(section);
+      addSimpleReference(ns);
       const actual = exportFn(ns);
       const expected = expectedFn('SimpleReference');
       expect(actual).to.eql(expected);
@@ -51,10 +38,7 @@ function commonTests(expectedFn, exportFn) {
     it('should correctly export an entry with an element value', () => {
       // NOTE: This is an entry where the value is not a primitive, e.g. "Value: SomeOtherDataElement"
       const ns = new Namespace('shr.test');
-      const simple = addElementValue(ns);
-      const section = new Section('test');
-      section.addEntry(new QuantifiedValue(new Value(simple.identifier), 0, 1));
-      ns.addSection(section);
+      addElementValue(ns);
       const actual = exportFn(ns);
       const expected = expectedFn('ElementValue');
       expect(actual).to.eql(expected);
@@ -64,10 +48,7 @@ function commonTests(expectedFn, exportFn) {
       // NOTE: This is an entry where the value is not a primitive, e.g. "Value: SomeOtherDataElement"
       const ns = new Namespace('shr.test');
       const otherNS = new Namespace('shr.other.test');
-      const simple = addForeignElementValue(ns, otherNS);
-      const section = new Section('test');
-      section.addEntry(new QuantifiedValue(new Value(simple.identifier), 0, 1));
-      ns.addSection(section);
+      addForeignElementValue(ns, otherNS);
       const actual = exportFn(ns, otherNS);
       const expected = expectedFn('ForeignElementValue');
       expect(actual).to.eql(expected);
@@ -76,10 +57,7 @@ function commonTests(expectedFn, exportFn) {
     it('should correctly export an entry with two-deep element value', () => {
       // NOTE: This is an entry where the value is a non-primitive, that itself has a value that is a non-primitive
       const ns = new Namespace('shr.test');
-      const twoDeep = addTwoDeepElementValue(ns);
-      const section = new Section('test');
-      section.addEntry(new QuantifiedValue(new Value(twoDeep.identifier), 0, 1));
-      ns.addSection(section);
+      addTwoDeepElementValue(ns);
       const actual = exportFn(ns);
       const expected = expectedFn('TwoDeepElementValue');
       expect(actual).to.eql(expected);
@@ -87,10 +65,7 @@ function commonTests(expectedFn, exportFn) {
 
     it('should correctly export a choice', () => {
       const ns = new Namespace('shr.test');
-      const choice = addChoice(ns);
-      const section = new Section('test');
-      section.addEntry(new QuantifiedValue(new Value(choice.identifier), 0, 1));
-      ns.addSection(section);
+      addChoice(ns);
       const actual = exportFn(ns);
       const expected = expectedFn('Choice');
       expect(actual).to.eql(expected);
@@ -99,10 +74,7 @@ function commonTests(expectedFn, exportFn) {
     it('should correctly export a group', () => {
       const ns = new Namespace('shr.test');
       const otherNS = new Namespace('shr.other.test');
-      const group = addGroup(ns, otherNS);
-      const section = new Section('test');
-      section.addEntry(new QuantifiedValue(new Value(group.identifier), 0, 1));
-      ns.addSection(section);
+      addGroup(ns, otherNS);
       const actual = exportFn(ns, otherNS);
       const expected = expectedFn('Group');
       expect(actual).to.eql(expected);
@@ -111,10 +83,7 @@ function commonTests(expectedFn, exportFn) {
     it('should correctly export a group with name clashes', () => {
       const ns = new Namespace('shr.test');
       const otherNS = new Namespace('shr.other.test');
-      const group = addGroupPathClash(ns, otherNS);
-      const section = new Section('test');
-      section.addEntry(new QuantifiedValue(new Value(group.identifier), 0, 1));
-      ns.addSection(section);
+      addGroupPathClash(ns, otherNS);
       const actual = exportFn(ns, otherNS);
       const expected = expectedFn('GroupPathClash');
       expect(actual).to.eql(expected);
@@ -123,7 +92,7 @@ function commonTests(expectedFn, exportFn) {
 }
 
 function addGroup(ns, otherNS, addSubElements=true) {
-  let gr = new Group(new Identifier(ns.namespace, 'Group'));
+  let gr = new Group(new Identifier(ns.namespace, 'Group'), true);
   gr.description = 'It is a group of elements';
   gr.addConcept(new Concept('http://foo.org', 'bar'));
   gr.addConcept(new Concept('http://boo.org', 'far'));
@@ -146,7 +115,7 @@ function addGroup(ns, otherNS, addSubElements=true) {
 }
 
 function addGroupPathClash(ns, nsOther, addSubElements=true) {
-  let gr = new Group(new Identifier(ns.namespace, 'GroupPathClash'));
+  let gr = new Group(new Identifier(ns.namespace, 'GroupPathClash'), true);
   gr.description = 'It is a group of elements with clashing names';
   gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
   gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.other.test', 'Simple')), 0, 1));
@@ -159,7 +128,7 @@ function addGroupPathClash(ns, nsOther, addSubElements=true) {
 }
 
 function addSimpleElement(ns) {
-  let de = new DataElement(new Identifier(ns.namespace, 'Simple'));
+  let de = new DataElement(new Identifier(ns.namespace, 'Simple'), true);
   de.description = 'It is a simple element';
   de.addConcept(new Concept('http://foo.org', 'bar'));
   de.value = new Value(new PrimitiveIdentifier('string'));
@@ -168,15 +137,15 @@ function addSimpleElement(ns) {
 }
 
 function addCodedElement(ns) {
-  let de = new DataElement(new Identifier(ns.namespace, 'Coded'));
+  let de = new DataElement(new Identifier(ns.namespace, 'Coded'), true);
   de.description = 'It is a coded element';
-  de.value = new CodeValue('http://standardhealthrecord.org/test/vs/Coded');
+  de.value = new CodeFromValueSetValue('http://standardhealthrecord.org/test/vs/Coded');
   ns.addDefinition(de);
   return de;
 }
 
 function addSimpleReference(ns) {
-  let de = new DataElement(new Identifier(ns.namespace, 'SimpleReference'));
+  let de = new DataElement(new Identifier(ns.namespace, 'SimpleReference'), true);
   de.description = 'It is a reference to a simple element';
   de.value = new RefValue(new Identifier(ns.namespace, 'Simple'));
   ns.addDefinition(de);
@@ -184,7 +153,7 @@ function addSimpleReference(ns) {
 }
 
 function addTwoDeepElementValue(ns, addSubElement=true) {
-  let de = new DataElement(new Identifier(ns.namespace, 'TwoDeepElementValue'));
+  let de = new DataElement(new Identifier(ns.namespace, 'TwoDeepElementValue'), true);
   de.description = 'It is an element with a two-deep element value';
   de.value = new Value(new Identifier(ns.namespace, 'ElementValue'));
   ns.addDefinition(de);
@@ -195,7 +164,7 @@ function addTwoDeepElementValue(ns, addSubElement=true) {
 }
 
 function addElementValue(ns, addSubElement=true) {
-  let de = new DataElement(new Identifier(ns.namespace, 'ElementValue'));
+  let de = new DataElement(new Identifier(ns.namespace, 'ElementValue'), true);
   de.description = 'It is an element with an element value';
   de.value = new Value(new Identifier(ns.namespace, 'Simple'));
   ns.addDefinition(de);
@@ -206,7 +175,7 @@ function addElementValue(ns, addSubElement=true) {
 }
 
 function addForeignElementValue(ns, otherNS) {
-  let de = new DataElement(new Identifier(ns.namespace, 'ForeignElementValue'));
+  let de = new DataElement(new Identifier(ns.namespace, 'ForeignElementValue'), true);
   de.description = 'It is an element with a foreign element value';
   de.value = new Value(new Identifier(otherNS.namespace, 'Simple'));
   ns.addDefinition(de);
@@ -215,11 +184,11 @@ function addForeignElementValue(ns, otherNS) {
 }
 
 function addChoice(ns, addSubElements=true) {
-  let ch = new DataElement(new Identifier(ns.namespace, 'Choice'));
+  let ch = new DataElement(new Identifier(ns.namespace, 'Choice'), true);
   ch.description = 'It is an element with a choice';
   let or = new OrValues();
   or.addValue(new Value(new PrimitiveIdentifier('string')));
-  or.addValue(new QuantifiedValue(new CodeValue('http://standardhealthrecord.org/test/vs/CodeChoice'), 0));
+  or.addValue(new QuantifiedValue(new CodeFromValueSetValue('http://standardhealthrecord.org/test/vs/CodeChoice'), 0));
   or.addValue(new QuantifiedValue(new Value(new Identifier('shr.test', 'Coded')), 1, 1));
   ch.value = or;
   ns.addDefinition(ch);
