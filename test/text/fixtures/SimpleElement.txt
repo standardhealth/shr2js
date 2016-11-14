@@ -2,7 +2,7 @@ DataDefinitions:  shr.test
 
 Vocabulary:     FOO = http://foo.org
 
-Entry:          Simple
+Element:        Simple
 Concept:        FOO #bar
-Description:    "It is a simple data element"
+Description:    "It is a simple element"
 1..1            string
