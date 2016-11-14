@@ -1,5 +1,5 @@
-Namespace:      shr.test
+DataDefinitions:  shr.test
 
-DataElement:    Choice
+Entry:          Choice
 Description:    "It is a data element with a choice"
-Value:          date or other.ns.Period or Simple
+1..1            (date or other.ns.Period or Simple)

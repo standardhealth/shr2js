@@ -48,16 +48,15 @@ describe('#importFromFilePath()', () => {
     const results = importFixture('ComplexChoiceDataElement');
     const choice = expectAndGetSingleElement(results, 'shr.test', 'ComplexChoice');
     expect(choice.description).to.equal('It is a data element with a complex choice');
-    expectMinMax(choice.value, 1, 2);
-    const or = choice.value.value;
+    const or = choice.value;
     expectOrValues(or, 2);
     const or0 = or.values[0];
-    expectMinMax(or0, 3, 4);
+    expectMinMax(or0, 1, 2);
     expectOrValues(or0.value, 2);
     expectOrValue(or0.value, 0, 'primitive', 'date');
     expectOrValue(or0.value, 1, 'other.ns', 'Period');
     const or1 = or.values[1];
-    expectMinMax(or1, 5, 6);
+    expectMinMax(or1, 3, 4);
     expectValue(or1.value, 'shr.test', 'Simple');
   });
 

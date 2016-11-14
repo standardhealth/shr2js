@@ -1,5 +1,5 @@
-Namespace:      shr.test
+DataDefinitions:  shr.test
 
-DataElement:    MultiString
+Entry:          MultiString
 Description:    "It is a multi-string data element"
-Value:          1..* string
+1..*            string

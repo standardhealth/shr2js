@@ -1,5 +1,5 @@
-Namespace:      shr.test
+DataDefinitions:  shr.test
 
-DataElement:    Coded
+Entry:          Coded
 Description:    "It is a coded data element"
-Value:          code from http://standardhealthrecord.org/test/vs/Coded
+1..1            code from http://standardhealthrecord.org/test/vs/Coded

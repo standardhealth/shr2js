@@ -1,9 +1,9 @@
-Namespace:      shr.test
+DataDefinitions: shr.test
 
-DataElement:    SimpleDate
+Entry:          SimpleDate
 Description:    "It is a simple date data element"
-Value:          date
+1..1            date
 
-DataElement:    Coded
+Entry:          Coded
 Description:    "It is a coded data element"
-Value:          code from http://standardhealthrecord.org/test/vs/Coded
+1..1            code from http://standardhealthrecord.org/test/vs/Coded
