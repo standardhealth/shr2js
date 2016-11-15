@@ -3,6 +3,22 @@
   "id": "http://standardhealthrecord.org/schemas/shr/types.schema.json",
   "description": "Types used by SHR (primitives are based on FHIR)",
   "definitions": {
+    "base64Binary": {
+      "description": "A stream of bytes, base64 encoded (RFC 4648) (Source: HL7 FHIR)",
+      "type": "string"
+    },
+    "boolean": {
+      "description": "true | false (Source: HL7 FHIR)",
+      "type": "boolean"
+    },
+    "decimal": {
+      "description": "Rational numbers that have a decimal representation. See below about the precision of the number (Source: HL7 FHIR)",
+      "type": "number"
+    },
+    "integer": {
+      "description": "A signed 32-bit integer (for larger values, use decimal) (Source: HL7 FHIR)",
+      "type": "integer"
+    },
     "code": {
       "description": "Indicates that the value is taken from a set of controlled strings defined elsewhere. Technically, a code is restricted to a string which has at least one character and no leading or trailing whitespace, and where there is no whitespace other than single spaces in the contents. (Source: HL7 FHIR)",
       "type": "string",
@@ -15,6 +31,59 @@
         "version": {"type": "string"},
         "code": {"$ref": "#/definitions/code"},
         "display": {"type": "string"}
+      },
+      "date": {
+        "description": "A date, or partial date (e.g. just year or year + month) as used in human communication. There is no time zone. Dates SHALL be valid dates (Source: HL7 FHIR)",
+        "type": "string",
+        "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?"
+      },
+      "dateTime": {
+        "description": "A date, date-time or partial date (e.g. just year or year + month) as used in human communication. If hours and minutes are specified, a time zone SHALL be populated. Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored. Dates SHALL be valid dates. The time '24:00' is not allowed (Source: HL7 FHIR)",
+        "type": "string",
+        "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+      },
+      "id": {
+        "description": "A string that may contain markdown syntax for optional processing by a markdown presentation engine (Source: HL7 FHIR)",
+        "type": "string",
+        "pattern": "[A-Za-z0-9\\-\\.]{1,64}"
+      },
+      "instant": {
+        "description": "An instant in time - known at least to the second and always includes a time zone. Note: This is intended for precisely observed times (typically system logs etc.), and not human-reported times - for them, use date and dateTime. instant is a more constrained dateTime (Source: HL7 FHIR)",
+        "type": "string",
+        "format": "date-time"
+      },
+      "markdown": {
+        "description": "A string that may contain markdown syntax for optional processing by a markdown presentation engine (Source: HL7 FHIR)",
+        "type": "string"
+      },
+      "oid": {
+        "description": "An OID represented as a URI (RFC 3001 ); e.g. urn:oid:1.2.3.4.5 (Source: HL7 FHIR)",
+        "type": "string",
+        "pattern": "urn:oid:[0-2](\\.[1-9]\\d*)+'}"
+      },
+      "positiveInt": {
+        "description": "Any positive integer (e.g. >= 1) (Source: HL7 FHIR)",
+        "type": "integer",
+        "minimum": 1
+      },
+      "string": {
+        "description": "A sequence of Unicode characters. Note that strings SHALL NOT exceed 1MB in size. String should not contain Unicode character points below 32, except for u0009 (horizontal tab), u0010 (carriage return) and u0013 (line feed) (Source: HL7 FHIR)",
+        "type": "string"
+      },
+      "unsignedInt": {
+        "description": "Any non-negative integer (e.g. >= 0) (Source: HL7 FHIR)",
+        "type": "integer",
+        "minimum": 0
+      },
+      "time": {
+        "description": "A time during the day, with no date specified (can be converted to a Duration since midnight). Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored. The time '24:00' is not allowed, and neither is a time zone (Source: HL7 FHIR)",
+        "type": "string",
+        "format": "([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?"
+      },
+      "uri": {
+        "description": "A Uniform Resource Identifier Reference (RFC 3986 ). Note: URIs are case sensitive. For UUID (urn:uuid:53fefa32-fcbb-4ff8-8a92-55ee120877b7) use all lowercase (Source: HL7 FHIR)",
+        "type": "string",
+        "format": "uri"
       },
       "additionalProperties": false
     }
