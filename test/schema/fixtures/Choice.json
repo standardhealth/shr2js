@@ -16,7 +16,7 @@
         }
       },
       {
-        "$ref": "http://standardhealthrecord.org/schemas/shr/test/Coded.schema.json"
+        "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json/definitions/code"
       }
     ]
   },

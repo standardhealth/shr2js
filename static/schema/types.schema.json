@@ -15,7 +15,7 @@
       "description": "Rational numbers that have a decimal representation. See below about the precision of the number (Source: HL7 FHIR)",
       "type": "number"
     },
-    "integer": {
+      "integer": {
       "description": "A signed 32-bit integer (for larger values, use decimal) (Source: HL7 FHIR)",
       "type": "integer"
     },
@@ -56,6 +56,7 @@
         "description": "A string that may contain markdown syntax for optional processing by a markdown presentation engine (Source: HL7 FHIR)",
         "type": "string"
       },
+      
       "oid": {
         "description": "An OID represented as a URI (RFC 3001 ); e.g. urn:oid:1.2.3.4.5 (Source: HL7 FHIR)",
         "type": "string",
