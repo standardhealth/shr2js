@@ -44,21 +44,20 @@
     "required": ["shr.test.Simple"]
   },
   {
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/string",
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json",
     "concepts": [{
       "codeSystem": "http://foo.org",
       "code": "bar"
     }],
-    "description": "It is a simple element",
-    "type": "string"
+    "description": "It is a simple element"
   },
   {
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code",
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/Coded.schema.json",
     "description": "It is a coded element",
-    "type": "string",
-    "pattern": "[^\\s]+([\\s]?[^\\s]+)*",
     "valueset": "http://standardhealthrecord.org/test/vs/Coded"
   },
   {
@@ -74,13 +73,13 @@
     "$ref": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json"
   },
   {
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/string",
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/other/test/Simple.schema.json",
     "concepts": [{
       "codeSystem": "http://foo.org",
       "code": "bar"
     }],
-    "description": "It is a simple element",
-    "type": "string"
+    "description": "It is a simple element"
   }
 ]

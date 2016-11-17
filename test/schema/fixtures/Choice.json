@@ -1,5 +1,6 @@
 [
   {
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code",
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/Choice.schema.json",
     "description": "It is an element with a choice",
@@ -16,16 +17,15 @@
         }
       },
       {
-        "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json/definitions/code"
+        "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code"
       }
     ]
   },
   {
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code",
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/Coded.schema.json",
     "description": "It is a coded element",
-    "type": "string",
-    "pattern": "[^\\s]+([\\s]?[^\\s]+)*",
     "valueset": "http://standardhealthrecord.org/test/vs/Coded"
   }
 ]
