@@ -1,6 +1,5 @@
 DataDefinitions:  shr.test.one
-Uses:             shr.test.two
-Uses:             shr.test.three
+Uses:             shr.test.two, shr.test.three
 
 Vocabulary:     FOO = http://foo.org
 
