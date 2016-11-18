@@ -1,23 +1,21 @@
 [
   {
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code",
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/Choice.schema.json",
     "description": "It is an element with a choice",
     "oneOf": [
       {
-        "type": "string"
+        "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/string"
       },
       {
         "type": "array",
         "items": {
-          "type": "string",
-          "pattern": "[^\\s]+([\\s]?[^\\s]+)*",
+          "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code",
           "valueset": "http://standardhealthrecord.org/test/vs/CodeChoice"
         }
       },
       {
-        "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code"
+        "$ref": "http://standardhealthrecord.org/schemas/shr/test/Coded.schema.json"
       }
     ]
   },
