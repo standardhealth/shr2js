@@ -2,4 +2,4 @@ DataDefinitions:  shr.test
 
 Entry:          Coded
 Description:    "It is a coded entry"
-1..1            code from http://standardhealthrecord.org/test/vs/Coded
+1..1            code

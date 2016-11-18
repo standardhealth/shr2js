@@ -3,6 +3,6 @@ DataDefinitions:  shr.test
 Vocabulary:     FOO = http://foo.org
 
 Entry:          Simple
-Concept:        FOO #bar [Foobar]
-Description:    "It is a simple entry"
+Concept:        ZOO #bear
+Description:    "It is a simple entry with invalid vocab"
 1..1            string

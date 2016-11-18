@@ -1,0 +1,7 @@
+DataDefinitions:  shr.test.one
+Uses:             shr.test.two
+Uses:             shr.test.three
+
+Entry:          Ambiguous
+Description:    "It is an entry that uses an ambiguous reference"
+1..1            Foo
