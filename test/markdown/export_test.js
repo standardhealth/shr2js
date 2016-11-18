@@ -14,15 +14,19 @@ describe('#exportToMarkdownGrammarV3Cases()', () => {
     de.value = new CodeFromAncestorValue(new Concept('http://foo.org', 'bar', 'Foobar'));
     ns.addDefinition(de);
     let expectedMD = importFixture('CodedDescendent');
-    let markdown = exportToMarkdown([ns]);
+    let markdown = exportNamespaces(ns);
     expect(markdown).to.have.length(1);
     expect(markdown).to.eql(expectedMD);
   });
 });
 
 function exportNamespaces(...namespace) {
-  let schemas = exportToMarkdown(namespace);
-  return schemas;
+  let markdowns = [];
+  const results = exportToMarkdown(namespace);
+  for (const ns of namespace) {
+    markdowns = markdowns.concat(results[ns.namespace].defMarkdowns);
+  }
+  return markdowns;
 }
 
 function importFixture(name, ext='.md') {
