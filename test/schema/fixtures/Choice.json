@@ -20,9 +20,9 @@
     ]
   },
   {
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code",
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/Coded.schema.json",
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code",
     "description": "It is a coded element",
     "valueset": "http://standardhealthrecord.org/test/vs/Coded"
   }
