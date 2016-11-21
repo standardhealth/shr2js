@@ -14,11 +14,11 @@
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/string",
     "concepts": [{
       "codeSystem": "http://foo.org",
       "code": "bar"
     }],
-    "description": "It is a simple element"
+    "description": "It is a simple element",
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/string"
   }
 ]
