@@ -22,7 +22,7 @@
       "code": "bar"
     }],
     "description": "It is a simple element",
-    "type": "string"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/string"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
@@ -32,6 +32,6 @@
       "code": "bar"
     }],
     "description": "It is a simple element",
-    "type": "string"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/string"
   }
 ]
