@@ -15,7 +15,6 @@ describe('#exportToMarkdownGrammarV3Cases()', () => {
     ns.addDefinition(de);
     let expectedMD = importFixture('CodedDescendent');
     let markdown = exportNamespaces(ns);
-    expect(markdown).to.have.length(1);
     expect(markdown).to.eql(expectedMD);
   });
 });
@@ -24,13 +23,16 @@ function exportNamespaces(...namespace) {
   let markdowns = [];
   const results = exportToMarkdown(namespace);
   for (const ns of namespace) {
-    markdowns = markdowns.concat(results.namespaces[ns.namespace].index);
+    markdowns = markdowns.concat(splitLines(results.namespaces[ns.namespace].index), '');
   }
   return markdowns;
 }
 
 function importFixture(name, ext='.md') {
   const fixture = fs.readFileSync(`${__dirname}/fixtures/${name}${ext}`, 'utf8');
-  const files = fixture.split('<!-- next file -->');
-  return files.map(f => f.trim());
+  return splitLines(fixture).concat('');
+}
+
+function splitLines(text) {
+  return text.split('\n').map(l => l.trim());
 }
