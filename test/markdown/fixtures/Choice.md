@@ -1,11 +1,15 @@
-| shr.test.Choice [Entry] ||
-|---|---|
-| Description | It is an element with a choice |
-| Type | Choice of: <ul><li>string</li><li>0 or more code from http://standardhealthrecord.org/test/vs/CodeChoice</li><li>shr.test.Coded</li></ul> |
+# shr.test
 
-<!-- next file -->
+### <a name="Choice"></a>Choice [Entry]
+It is an element with a choice
 
-| shr.test.Coded [Entry] ||
-|---|---|
-| Description | It is a coded element |
-| Type | code from http://standardhealthrecord.org/test/vs/Coded |
+| | | |
+|---|---|---|
+| `Value` | Choice of: <ul><li>string</li><li>0&nbsp;or&nbsp;more code from http://standardhealthrecord.org/test/vs/CodeChoice</li><li>[`Coded`](../test/index.md#Coded)</li></ul> ||
+
+### <a name="Coded"></a>Coded [Entry]
+It is a coded element
+
+| | | |
+|---|---|---|
+| `Value` | code from http://standardhealthrecord.org/test/vs/Coded ||

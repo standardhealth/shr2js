@@ -1,19 +1,22 @@
-| shr.test.TwoDeepElementValue [Entry] ||
-|---|---|
-| Description | It is an element with a two-deep element value |
-| Type | shr.test.ElementValue |
+# shr.test
 
-<!-- next file -->
+### <a name="ElementValue"></a>ElementValue [Entry]
+It is an element with an element value
 
-| shr.test.ElementValue [Entry] ||
-|---|---|
-| Description | It is an element with an element value |
-| Type | shr.test.Simple |
+| | | |
+|---|---|---|
+| `Value` | [`Simple`](../test/index.md#Simple) ||
 
-<!-- next file -->
+### <a name="Simple"></a>Simple [Entry]
+It is a simple element [bar](http://foo.org/bar)
 
-| shr.test.Simple [Entry] ||
-|---|---|
-| Concept | http://foo.org bar |
-| Description | It is a simple element |
-| Type | string |
+| | | |
+|---|---|---|
+| `Value` | string ||
+
+### <a name="TwoDeepElementValue"></a>TwoDeepElementValue [Entry]
+It is an element with a two-deep element value
+
+| | | |
+|---|---|---|
+| `Value` | [`ElementValue`](../test/index.md#ElementValue) ||

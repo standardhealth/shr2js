@@ -1,4 +1,8 @@
-| shr.test.Coded [Entry] ||
-|---|---|
-| Description | It is a coded element |
-| Type | code from http://standardhealthrecord.org/test/vs/Coded |
+# shr.test
+
+### <a name="Coded"></a>Coded [Entry]
+It is a coded element
+
+| | | |
+|---|---|---|
+| `Value` | code from http://standardhealthrecord.org/test/vs/Coded ||

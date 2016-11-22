@@ -24,7 +24,7 @@ function exportNamespaces(...namespace) {
   let markdowns = [];
   const results = exportToMarkdown(namespace);
   for (const ns of namespace) {
-    markdowns = markdowns.concat(results[ns.namespace].defMarkdowns);
+    markdowns = markdowns.concat(results.namespaces[ns.namespace].index);
   }
   return markdowns;
 }

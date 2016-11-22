@@ -1,12 +1,15 @@
-| shr.test.ElementValue [Entry] ||
-|---|---|
-| Description | It is an element with an element value |
-| Type | shr.test.Simple |
+# shr.test
 
-<!-- next file -->
+### <a name="ElementValue"></a>ElementValue [Entry]
+It is an element with an element value
 
-| shr.test.Simple [Entry] ||
-|---|---|
-| Concept | http://foo.org bar |
-| Description | It is a simple element |
-| Type | string |
+| | | |
+|---|---|---|
+| `Value` | [`Simple`](../test/index.md#Simple) ||
+
+### <a name="Simple"></a>Simple [Entry]
+It is a simple element [bar](http://foo.org/bar)
+
+| | | |
+|---|---|---|
+| `Value` | string ||

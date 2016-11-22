@@ -27,6 +27,7 @@ function commonTests(expectedFn, exportFn) {
       expect(actual).to.eql(expected);
     });
 
+
     it('should correctly export a reference entry', () => {
       const ns = new Namespace('shr.test');
       addSimpleReference(ns);

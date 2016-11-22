@@ -1,4 +1,8 @@
-| shr.test.CodedDescendent [Entry] ||
-|---|---|
-| Description | It is a coded element descending from foobar |
-| Type | code descending from http://foo.org bar (Foobar) |
+# shr.test
+
+### <a name="CodedDescendent"></a>CodedDescendent [Entry]
+It is a coded element descending from foobar
+
+| | | |
+|---|---|---|
+| `Value` | code descending from [bar](http://foo.org/bar) _(Foobar)_ ||

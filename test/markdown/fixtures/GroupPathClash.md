@@ -1,22 +1,27 @@
-| shr.test.GroupPathClash [Entry] ||
-|---|---|
-| Description | It is a group of elements with clashing names |
-| Type | group |
-| Element | shr.test.Simple |
-| Element | optional shr.other.test.Simple |
+# shr.test
+
+### <a name="GroupPathClash"></a>GroupPathClash [Entry]
+It is a group of elements with clashing names
+
+| | | |
+|---|---|---|
+| [`Simple`](../test/index.md#Simple) | 1 | It is a simple element |
+| [`Simple`](../test/index.md#Simple) | optional | It is a simple element |
+
+### <a name="Simple"></a>Simple [Entry]
+It is a simple element [bar](http://foo.org/bar)
+
+| | | |
+|---|---|---|
+| `Value` | string ||
 
 <!-- next file -->
 
-| shr.test.Simple [Entry] ||
-|---|---|
-| Concept | http://foo.org bar |
-| Description | It is a simple element |
-| Type | string |
+# shr.other.test
 
-<!-- next file -->
+### <a name="Simple"></a>Simple [Entry]
+It is a simple element [bar](http://foo.org/bar)
 
-| shr.other.test.Simple [Entry] ||
-|---|---|
-| Concept | http://foo.org bar |
-| Description | It is a simple element |
-| Type | string |
+| | | |
+|---|---|---|
+| `Value` | string ||
