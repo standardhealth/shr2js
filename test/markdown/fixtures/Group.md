@@ -12,26 +12,26 @@ It is an element with an element value
 
 | | | |
 |---|---|---|
-| `Value` | [`Simple`](../test/index.md#Simple) ||
+| `Value` | [`Simple`](#Simple) ||
 
 ### <a name="ForeignElementValue"></a>ForeignElementValue [Entry]
 It is an element with a foreign element value
 
 | | | |
 |---|---|---|
-| `Value` | [`Simple`](../test/index.md#Simple) ||
+| `Value` | [`Simple`](../other/test/index.md#Simple) ||
 
 ### <a name="Group"></a>Group [Entry]
 It is a group of elements [bar](http://foo.org/bar), [far](http://boo.org/far)
 
 | | | |
 |---|---|---|
-| [`Simple`](../test/index.md#Simple) | 1 | It is a simple element |
-| [`Coded`](../test/index.md#Coded) | optional | It is a coded element |
+| [`Simple`](#Simple) | 1 | It is a simple element |
+| [`Coded`](#Coded) | optional | It is a coded element |
 | Choice | 0&nbsp;to&nbsp;2 | |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;[`Simple`](../test/index.md#Simple) | 1 | It is a simple element |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;[`ForeignElementValue`](../test/index.md#ForeignElementValue) | 1&nbsp;or&nbsp;more | It is an element with a foreign element value |
-| [`ElementValue`](../test/index.md#ElementValue) | 0&nbsp;or&nbsp;more | It is an element with an element value |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;[`Simple`](../other/test/index.md#Simple) | 1 | It is a simple element |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;[`ForeignElementValue`](#ForeignElementValue) | 1&nbsp;or&nbsp;more | It is an element with a foreign element value |
+| [`ElementValue`](#ElementValue) | 0&nbsp;or&nbsp;more | It is an element with an element value |
 
 ### <a name="Simple"></a>Simple [Entry]
 It is a simple element [bar](http://foo.org/bar)
@@ -39,8 +39,6 @@ It is a simple element [bar](http://foo.org/bar)
 | | | |
 |---|---|---|
 | `Value` | string ||
-
-<!-- next file -->
 
 # shr.other.test
 

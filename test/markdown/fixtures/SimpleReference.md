@@ -5,4 +5,4 @@ It is a reference to a simple element
 
 | | | |
 |---|---|---|
-| `Value` | reference to [`Simple`](../test/index.md#Simple) ||
+| `Value` | reference to [`Simple`](#Simple) ||

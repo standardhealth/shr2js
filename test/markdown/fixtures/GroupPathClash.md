@@ -5,8 +5,8 @@ It is a group of elements with clashing names
 
 | | | |
 |---|---|---|
-| [`Simple`](../test/index.md#Simple) | 1 | It is a simple element |
-| [`Simple`](../test/index.md#Simple) | optional | It is a simple element |
+| [`Simple`](#Simple) | 1 | It is a simple element |
+| [`Simple`](../other/test/index.md#Simple) | optional | It is a simple element |
 
 ### <a name="Simple"></a>Simple [Entry]
 It is a simple element [bar](http://foo.org/bar)
@@ -14,8 +14,6 @@ It is a simple element [bar](http://foo.org/bar)
 | | | |
 |---|---|---|
 | `Value` | string ||
-
-<!-- next file -->
 
 # shr.other.test
 

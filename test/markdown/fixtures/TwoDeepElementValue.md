@@ -5,7 +5,7 @@ It is an element with an element value
 
 | | | |
 |---|---|---|
-| `Value` | [`Simple`](../test/index.md#Simple) ||
+| `Value` | [`Simple`](#Simple) ||
 
 ### <a name="Simple"></a>Simple [Entry]
 It is a simple element [bar](http://foo.org/bar)
@@ -19,4 +19,4 @@ It is an element with a two-deep element value
 
 | | | |
 |---|---|---|
-| `Value` | [`ElementValue`](../test/index.md#ElementValue) ||
+| `Value` | [`ElementValue`](#ElementValue) ||

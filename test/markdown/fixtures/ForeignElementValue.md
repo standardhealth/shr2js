@@ -5,9 +5,7 @@ It is an element with a foreign element value
 
 | | | |
 |---|---|---|
-| `Value` | [`Simple`](../test/index.md#Simple) ||
-
-<!-- next file -->
+| `Value` | [`Simple`](../other/test/index.md#Simple) ||
 
 # shr.other.test
 
