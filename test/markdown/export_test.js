@@ -2,22 +2,9 @@ const {expect} = require('chai');
 const fs = require('fs');
 const th = require('../test_helper');
 const {exportToMarkdown} = require('../../lib/markdown/export');
-const {Namespace, DataElement, Identifier, Concept, Value, PrimitiveIdentifier, CodeFromValueSetValue, CodeFromAncestorValue} = require('../../lib/models');
+const {Namespace, DataElement, Identifier, PrimitiveIdentifier, Concept, Value, CodeFromValueSetValue, CodeFromAncestorValue} = require('../../lib/models');
 
 describe('#exportToMarkdownCommonCases()', th.commonTests(importFixture, exportNamespaces));
-
-describe('#exportToMarkdownGrammarV3Cases()', () => {
-  it('should correctly export coded descendents', () => {
-    let ns = new Namespace('shr.test');
-    let de = new DataElement(new Identifier(ns.namespace, 'CodedDescendent'), true);
-    de.description = 'It is a coded element descending from foobar';
-    de.value = new CodeFromAncestorValue(new Concept('http://foo.org', 'bar', 'Foobar'));
-    ns.addDefinition(de);
-    let expectedMD = importFixture('CodedDescendent');
-    let markdown = exportNamespaces(ns);
-    expect(markdown).to.eql(expectedMD);
-  });
-});
 
 describe('#exportToMarkdownSpecificCases()', () => {
   it('should correctly export a master index', () => {

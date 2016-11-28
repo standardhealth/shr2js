@@ -3,6 +3,6 @@
 ### <a name="SimpleReference"></a>SimpleReference [Entry]
 It is a reference to a simple element
 
-| | | |
-|---|---|---|
-| `Value` | reference to [`Simple`](#Simple) ||
+|  |  |  |
+| --- | --- | --- |
+| `Value` | reference to [`Simple`](#Simple) |  |
