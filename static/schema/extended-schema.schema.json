@@ -8,20 +8,30 @@
         "concepts": {
           "type": "array",
           "items": {
-            "type": "object",
-            "properties": {
-              "system": {"type": "string"},
-              "version": {"type": "string"},
-              "code": {"type": "string"},
-              "display": {"type": "string"}
-            },
-            "required": ["code"],
-            "additionalProperties": false
+            "type": "#/definitions/concept"
           }
+        },
+        "concept": {
+          "type": "object",
+          "properties": {
+            "system": {"type": "string"},
+            "version": {"type": "string"},
+            "code": {"type": "string"},
+            "display": {"type": "string"},
+            "label": {"type": "string"}
+          },
+          "required": ["code"],
+          "additionalProperties": false
+        },
+        "descendingFrom": {
+          "type": "#/definitions/concept"
         },
         "valueSet": {
           "type": "string",
           "format": "uri"
+        },
+        "entry": {
+          "type": "boolean"
         }
       }
     },
