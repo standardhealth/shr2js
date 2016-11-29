@@ -3,106 +3,96 @@
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/booleanElement.schema.json",
     "description": "It is a boolean data element",
-    "type": "boolean"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/boolean"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/integerElement.schema.json",
     "description": "It is a integer data element",
-    "type": "integer"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/integer"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/decimalElement.schema.json",
     "description": "It is a decimal data element",
-    "type": "number"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/decimal"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/unsignedIntElement.schema.json",
     "description": "It is a unsignedInt data element",
-    "type": "integer",
-    "minimum": 0
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/unsignedInt"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/positiveIntElement.schema.json",
     "description": "It is a positiveInt data element",
-    "type": "integer",
-    "minimum": 1
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/positiveInt"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/stringElement.schema.json",
     "description": "It is a string data element",
-    "type": "string"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/string"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/markdownElement.schema.json",
     "description": "It is a markdown data element",
-    "type": "string"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/markdown"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/codeElement.schema.json",
     "description": "It is a code data element",
-    "type": "string",
-    "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/idElement.schema.json",
     "description": "It is a id data element",
-    "type": "string",
-    "pattern": "[A-Za-z0-9\\-\\.]{1,64}"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/id"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/oidElement.schema.json",
     "description": "It is a oid data element",
-    "type": "string",
-    "pattern": "urn:oid:[0-2](\\.[1-9]\\d*)+"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/oid"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/uriElement.schema.json",
     "description": "It is a uri data element",
-    "type": "string",
-    "format": "uri"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/uri"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/base64BinaryElement.schema.json",
     "description": "It is a base64Binary data element",
-    "type": "string"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/base64Binary"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/dateElement.schema.json",
     "description": "It is a date data element",
-    "type": "string",
-    "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/date"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/dateTimeElement.schema.json",
     "description": "It is a dateTime data element",
-    "type": "string",
-    "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/dateTime"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/instantElement.schema.json",
     "description": "It is a instant data element",
-    "type": "string",
-    "format": "date-time"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/instant"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/timeElement.schema.json",
     "description": "It is a time data element",
-    "type": "string",
-    "pattern": "([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/time"
   }
 ]
