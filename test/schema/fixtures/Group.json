@@ -2,12 +2,15 @@
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/Group.schema.json",
+    "isEntry": true,
     "concepts": [
       {
-        "codeSystem": "http://foo.org",
-        "code": "bar"
+        "code": "bar",
+        "display": "Foobar",
+        "system": "http://foo.org"
       }, {
-        "codeSystem": "http://boo.org",
+        "display": "Boofar",
+        "system": "http://boo.org",
         "code": "far"
       }
     ],
@@ -46,8 +49,10 @@
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json",
+    "isEntry": true,
     "concepts": [{
-      "codeSystem": "http://foo.org",
+      "system": "http://foo.org",
+      "display": "Foobar",
       "code": "bar"
     }],
     "description": "It is a simple element",
@@ -56,6 +61,7 @@
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/Coded.schema.json",
+    "isEntry": true,
     "description": "It is a coded element",
     "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code",
     "valueset": "http://standardhealthrecord.org/test/vs/Coded"
@@ -63,20 +69,24 @@
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/ForeignElementValue.schema.json",
+    "isEntry": true,
     "description": "It is an element with a foreign element value",
     "$ref": "http://standardhealthrecord.org/schemas/shr/other/test/Simple.schema.json"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/ElementValue.schema.json",
+    "isEntry": true,
     "description": "It is an element with an element value",
     "$ref": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json"
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/other/test/Simple.schema.json",
+    "isEntry": true,
     "concepts": [{
-      "codeSystem": "http://foo.org",
+      "system": "http://foo.org",
+      "display": "Foobar",
       "code": "bar"
     }],
     "description": "It is a simple element",

@@ -3,96 +3,112 @@
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/booleanElement.schema.json",
     "description": "It is a boolean data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/boolean"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/boolean",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/integerElement.schema.json",
     "description": "It is a integer data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/integer"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/integer",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/decimalElement.schema.json",
     "description": "It is a decimal data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/decimal"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/decimal",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/unsignedIntElement.schema.json",
     "description": "It is a unsignedInt data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/unsignedInt"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/unsignedInt",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/positiveIntElement.schema.json",
     "description": "It is a positiveInt data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/positiveInt"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/positiveInt",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/stringElement.schema.json",
     "description": "It is a string data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/string"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/string",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/markdownElement.schema.json",
     "description": "It is a markdown data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/markdown"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/markdown",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/codeElement.schema.json",
     "description": "It is a code data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/idElement.schema.json",
     "description": "It is a id data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/id"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/id",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/oidElement.schema.json",
     "description": "It is a oid data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/oid"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/oid",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/uriElement.schema.json",
     "description": "It is a uri data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/uri"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/uri",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/base64BinaryElement.schema.json",
     "description": "It is a base64Binary data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/base64Binary"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/base64Binary",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/dateElement.schema.json",
     "description": "It is a date data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/date"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/date",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/dateTimeElement.schema.json",
     "description": "It is a dateTime data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/dateTime"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/dateTime",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/instantElement.schema.json",
     "description": "It is a instant data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/instant"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/instant",
+    "isEntry": false
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/timeElement.schema.json",
     "description": "It is a time data element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/time"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/time",
+    "isEntry": false
   }
 ]

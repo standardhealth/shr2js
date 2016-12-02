@@ -11,18 +11,6 @@
             "type": "#/definitions/concept"
           }
         },
-        "concept": {
-          "type": "object",
-          "properties": {
-            "system": {"type": "string"},
-            "version": {"type": "string"},
-            "code": {"type": "string"},
-            "display": {"type": "string"},
-            "label": {"type": "string"}
-          },
-          "required": ["code"],
-          "additionalProperties": false
-        },
         "descendingFrom": {
           "type": "#/definitions/concept"
         },
@@ -30,7 +18,7 @@
           "type": "string",
           "format": "uri"
         },
-        "entry": {
+        "isEntry": {
           "type": "boolean"
         }
       }

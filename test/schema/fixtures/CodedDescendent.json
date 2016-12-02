@@ -3,6 +3,8 @@
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/CodedDescendent.schema.json",
     "description": "It is a coded element descending from foobar",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code"
+    "descendingFrom": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/concept",
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code",
+    "isEntry": true
   }
 ]
