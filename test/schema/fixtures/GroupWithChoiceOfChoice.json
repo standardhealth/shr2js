@@ -1,0 +1,96 @@
+[
+  {
+    "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
+    "description": "It is a group of elements with a choice containing a choice",
+    "id": "http://standardhealthrecord.org/schemas/shr/test/GroupWithChoiceOfChoice.schema.json",
+    "isEntry": true,
+    "properties": {
+      "choice": {
+        "oneOf": [
+          {
+            "$ref": "http://standardhealthrecord.org/schemas/shr/other/test/Simple.schema.json"
+          },
+          {
+            "oneOf": [
+              {
+                "items": {
+                  "$ref": "http://standardhealthrecord.org/schemas/shr/test/ForeignElementValue.schema.json"
+                },
+                "minItems": 1,
+                "type": "array"
+              },
+              {
+                "items": {
+                  "$ref": "http://standardhealthrecord.org/schemas/shr/test/ElementValue.schema.json"
+                },
+                "minItems": 1,
+                "type": "array"
+              }
+            ]
+          }
+        ]
+      },
+      "shr.test.Coded": {
+        "$ref": "http://standardhealthrecord.org/schemas/shr/test/Coded.schema.json"
+      },
+      "shr.test.Simple": {
+        "$ref": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json"
+      }
+    },
+    "required": [
+      "shr.test.Simple"
+    ],
+    "type": "object"
+  },
+  {
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/string",
+    "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
+    "concepts": [
+      {
+        "code": "bar",
+        "display": "Foobar",
+        "system": "http://foo.org"
+      }
+    ],
+    "description": "It is a simple element",
+    "id": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json",
+    "isEntry": true
+  },
+  {
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/code",
+    "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
+    "description": "It is a coded element",
+    "id": "http://standardhealthrecord.org/schemas/shr/test/Coded.schema.json",
+    "isEntry": true,
+    "valueset": "http://standardhealthrecord.org/test/vs/Coded"
+  },
+  {
+    "$ref": "http://standardhealthrecord.org/schemas/shr/other/test/Simple.schema.json",
+    "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
+    "description": "It is an element with a foreign element value",
+    "id": "http://standardhealthrecord.org/schemas/shr/test/ForeignElementValue.schema.json",
+    "isEntry": true
+  },
+  {
+    "$ref": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json",
+    "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
+    "description": "It is an element with an element value",
+    "id": "http://standardhealthrecord.org/schemas/shr/test/ElementValue.schema.json",
+    "isEntry": true
+  },
+  {
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/string",
+    "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
+    "concepts": [
+      {
+        "code": "bar",
+        "display": "Foobar",
+        "system": "http://foo.org"
+      }
+    ],
+    "description": "It is a simple element",
+    "id": "http://standardhealthrecord.org/schemas/shr/other/test/Simple.schema.json",
+    "isEntry": true
+
+  }
+]

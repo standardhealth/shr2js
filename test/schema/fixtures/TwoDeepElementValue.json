@@ -3,22 +3,26 @@
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/TwoDeepElementValue.schema.json",
     "description": "It is an element with a two-deep element value",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/test/ElementValue.schema.json"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/test/ElementValue.schema.json",
+    "isEntry": true
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/ElementValue.schema.json",
     "description": "It is an element with an element value",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json",
+    "isEntry": true
   },
   {
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json",
     "concepts": [{
-      "codeSystem": "http://foo.org",
-      "code": "bar"
+      "code": "bar",
+      "display": "Foobar",
+      "system": "http://foo.org"
     }],
     "description": "It is a simple element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/string"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/string",
+    "isEntry": true
   }
 ]

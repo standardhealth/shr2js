@@ -22,7 +22,7 @@ It is an element with a foreign element value
 | `Value` | [`Simple`](../other/test/index.md#Simple) |  |
 
 ### <a name="Group"></a>Group [Entry]
-It is a group of elements [bar](http://foo.org/bar), [far](http://boo.org/far)
+It is a group of elements [bar](http://foo.org/bar) _(Foobar)_, [far](http://boo.org/far) _(Boofar)_
 
 |  |  |  |
 | --- | --- | --- |
@@ -34,7 +34,7 @@ It is a group of elements [bar](http://foo.org/bar), [far](http://boo.org/far)
 | [`ElementValue`](#ElementValue) | 0&nbsp;or&nbsp;more | It is an element with an element value |
 
 ### <a name="Simple"></a>Simple [Entry]
-It is a simple element [bar](http://foo.org/bar)
+It is a simple element [bar](http://foo.org/bar) _(Foobar)_
 
 |  |  |  |
 | --- | --- | --- |
@@ -43,7 +43,7 @@ It is a simple element [bar](http://foo.org/bar)
 # shr.other.test
 
 ### <a name="Simple"></a>Simple [Entry]
-It is a simple element [bar](http://foo.org/bar)
+It is a simple element [bar](http://foo.org/bar) _(Foobar)_
 
 |  |  |  |
 | --- | --- | --- |

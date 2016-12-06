@@ -3,6 +3,7 @@
     "$schema": "http://standardhealthrecord.org/schemas/shr/extended-schema.schema.json",
     "id": "http://standardhealthrecord.org/schemas/shr/test/SimpleReference.schema.json",
     "description": "It is a reference to a simple element",
-    "$ref": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json"
+    "$ref": "http://standardhealthrecord.org/schemas/shr/test/Simple.schema.json",
+    "isEntry": true
   }
 ]

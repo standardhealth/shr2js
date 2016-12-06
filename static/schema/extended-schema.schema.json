@@ -8,20 +8,18 @@
         "concepts": {
           "type": "array",
           "items": {
-            "type": "object",
-            "properties": {
-              "system": {"type": "string"},
-              "version": {"type": "string"},
-              "code": {"type": "string"},
-              "display": {"type": "string"}
-            },
-            "required": ["code"],
-            "additionalProperties": false
+            "type": "#/definitions/concept"
           }
+        },
+        "descendingFrom": {
+          "type": "#/definitions/concept"
         },
         "valueSet": {
           "type": "string",
           "format": "uri"
+        },
+        "isEntry": {
+          "type": "boolean"
         }
       }
     },

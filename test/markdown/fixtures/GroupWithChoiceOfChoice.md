@@ -35,7 +35,7 @@ It is a group of elements with a choice containing a choice
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;[`ElementValue`](#ElementValue) | 1&nbsp;or&nbsp;more | It is an element with an element value |
 
 ### <a name="Simple"></a>Simple [Entry]
-It is a simple element [bar](http://foo.org/bar)
+It is a simple element [bar](http://foo.org/bar) _(Foobar)_
 
 |  |  |  |
 | --- | --- | --- |
@@ -44,7 +44,7 @@ It is a simple element [bar](http://foo.org/bar)
 # shr.other.test
 
 ### <a name="Simple"></a>Simple [Entry]
-It is a simple element [bar](http://foo.org/bar)
+It is a simple element [bar](http://foo.org/bar) _(Foobar)_
 
 |  |  |  |
 | --- | --- | --- |
