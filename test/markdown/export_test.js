@@ -2,7 +2,7 @@ const {expect} = require('chai');
 const fs = require('fs');
 const th = require('../test_helper');
 const {exportToMarkdown} = require('../../lib/markdown/export');
-const {Namespace, DataElement, Identifier, PrimitiveIdentifier, Concept, Value, CodeFromValueSetValue, CodeFromAncestorValue} = require('../../lib/models');
+const {Namespace, DataElement, Field, Identifier, PrimitiveIdentifier, Concept, Value, CodeValue} = require('../../lib/models');
 
 describe('#exportToMarkdownCommonCases()', th.commonTests(importFixture, exportNamespaces));
 
@@ -12,18 +12,18 @@ describe('#exportToMarkdownSpecificCases()', () => {
     let de = new DataElement(new Identifier(ns.namespace, 'Simple'), true);
     de.description = 'It is a simple element';
     de.addConcept(new Concept('http://foo.org', 'bar'));
-    de.value = new Value(new PrimitiveIdentifier('string'));
+    de.value = new Field(new Value(new PrimitiveIdentifier('string')), 1, 1);
     ns.addDefinition(de);
 
     de = new DataElement(new Identifier(ns.namespace, 'Coded'), true);
     de.description = 'It is a coded element';
-    de.value = new CodeFromValueSetValue('http://standardhealthrecord.org/test/vs/Coded');
+    de.value = new Field(new CodeValue(new PrimitiveIdentifier('code'), 'http://standardhealthrecord.org/test/vs/Coded'));
     ns.addDefinition(de);
 
     let ns2 = new Namespace('shr.other.test');
     de = new DataElement(new Identifier(ns2.namespace, 'Simple'), true);
     de.description = 'It is a coded element descending from foobar';
-    de.value = new CodeFromAncestorValue(new Concept('http://foo.org', 'bar', 'Foobar'));
+    de.value = new Field(new CodeValue(new PrimitiveIdentifier('code'), 'http://standardhealthrecord.org/other/test/vs/Coded'), 1, 1);
     ns2.addDefinition(de);
 
     let expectedMD = importFixture('index');

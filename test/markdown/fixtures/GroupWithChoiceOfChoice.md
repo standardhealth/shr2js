@@ -5,21 +5,21 @@ It is a coded element
 
 |  |  |  |
 | --- | --- | --- |
-| `Value` | code from http://standardhealthrecord.org/test/vs/Coded |  |
+| Value:&nbsp;code from http://standardhealthrecord.org/test/vs/Coded |  |  |
 
 ### <a name="ElementValue"></a>ElementValue [Entry]
 It is an element with an element value
 
 |  |  |  |
 | --- | --- | --- |
-| `Value` | [`Simple`](#Simple) |  |
+| Value:&nbsp;[`Simple`](#Simple) |  | It is a simple element |
 
 ### <a name="ForeignElementValue"></a>ForeignElementValue [Entry]
 It is an element with a foreign element value
 
 |  |  |  |
 | --- | --- | --- |
-| `Value` | [`Simple`](../other/test/index.md#Simple) |  |
+| Value:&nbsp;[`Simple`](../other/test/index.md#Simple) |  | It is a simple element |
 
 ### <a name="GroupWithChoiceOfChoice"></a>GroupWithChoiceOfChoice [Entry]
 It is a group of elements with a choice containing a choice
@@ -39,7 +39,7 @@ It is a simple element [bar](http://foo.org/bar) _(Foobar)_
 
 |  |  |  |
 | --- | --- | --- |
-| `Value` | string |  |
+| Value:&nbsp;string |  |  |
 
 # shr.other.test
 
@@ -48,4 +48,4 @@ It is a simple element [bar](http://foo.org/bar) _(Foobar)_
 
 |  |  |  |
 | --- | --- | --- |
-| `Value` | string |  |
+| Value:&nbsp;string |  |  |

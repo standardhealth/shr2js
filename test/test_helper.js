@@ -1,5 +1,5 @@
 const {expect} = require('chai');
-const {Namespace, DataElement, Concept, Group, Value, CodeFromValueSetValue, CodeFromAncestorValue, RefValue, OrValues, QuantifiedValue, PrimitiveIdentifier, Identifier} = require('../lib/models');
+const {Namespace, DataElement, Concept, Value, CodeValue, RefValue, ChoiceValue, QuantifiedValue, Field, PrimitiveIdentifier, Identifier} = require('../lib/models');
 
 function commonTests(expectedFn, exportFn) {
   const wrappedExpectedFn = function(name, testCase) {
@@ -34,14 +34,6 @@ function commonTests(expectedFn, exportFn) {
       const ns = new Namespace('shr.test');
       addCodedElement(ns);
       const expected = wrappedExpectedFn('Coded', this);
-      const actual = exportFn(ns);
-      expect(actual).to.eql(expected);
-    });
-
-    it('should correctly export a coded descendent', function() {
-      const ns = new Namespace('shr.test');
-      addCodedDescendentElement(ns);
-      const expected = wrappedExpectedFn('CodedDescendent', this);
       const actual = exportFn(ns);
       expect(actual).to.eql(expected);
     });
@@ -124,21 +116,30 @@ function commonTests(expectedFn, exportFn) {
       const actual = exportFn(ns, otherNS);
       expect(actual).to.eql(expected);
     });
+
+    it('should correctly export an element based on a group element', function() {
+      const ns = new Namespace('shr.test');
+      const otherNS = new Namespace('shr.other.test');
+      addGroupDerivative(ns, otherNS);
+      const expected = wrappedExpectedFn('GroupDerivative', this);
+      const actual = exportFn(ns, otherNS);
+      expect(actual).to.eql(expected);
+    });
   };
 }
 
 function addGroup(ns, otherNS, addSubElements=true) {
-  let gr = new Group(new Identifier(ns.namespace, 'Group'), true);
+  let gr = new DataElement(new Identifier(ns.namespace, 'Group'), true);
   gr.description = 'It is a group of elements';
   gr.addConcept(new Concept('http://foo.org', 'bar', 'Foobar'));
   gr.addConcept(new Concept('http://boo.org', 'far', 'Boofar'));
-  gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
-  gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Coded')), 0, 1));
-  let or = new OrValues();
-  or.addValue(new QuantifiedValue(new Value(new Identifier('shr.other.test', 'Simple')), 1, 1));
-  or.addValue(new QuantifiedValue(new Value(new Identifier('shr.test', 'ForeignElementValue')), 1));
-  gr.addElement(new QuantifiedValue(or, 0, 2));
-  gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'ElementValue')), 0));
+  gr.addElement(new Field(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
+  gr.addElement(new Field(new Value(new Identifier('shr.test', 'Coded')), 0, 1));
+  let choice = new ChoiceValue();
+  choice.addOption(new QuantifiedValue(new Value(new Identifier('shr.other.test', 'Simple')), 1, 1));
+  choice.addOption(new QuantifiedValue(new Value(new Identifier('shr.test', 'ForeignElementValue')), 1));
+  gr.addElement(new Field(choice, 0, 2));
+  gr.addElement(new Field(new Value(new Identifier('shr.test', 'ElementValue')), 0));
   ns.addDefinition(gr);
   if (addSubElements) {
     addSimpleElement(ns);
@@ -151,17 +152,17 @@ function addGroup(ns, otherNS, addSubElements=true) {
 }
 
 function addGroupWithChoiceOfChoice(ns, otherNS, addSubElements=true) {
-  let gr = new Group(new Identifier(ns.namespace, 'GroupWithChoiceOfChoice'), true);
+  let gr = new DataElement(new Identifier(ns.namespace, 'GroupWithChoiceOfChoice'), true);
   gr.description = 'It is a group of elements with a choice containing a choice';
-  gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
-  gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Coded')), 0, 1));
-  let or = new OrValues();
-  or.addValue(new QuantifiedValue(new Value(new Identifier('shr.other.test', 'Simple')), 1, 1));
-  let or2 = new OrValues();
-  or2.addValue(new QuantifiedValue(new Value(new Identifier('shr.test', 'ForeignElementValue')), 1));
-  or2.addValue(new QuantifiedValue(new Value(new Identifier('shr.test', 'ElementValue')), 1));
-  or.addValue(or2);
-  gr.addElement(new QuantifiedValue(or, 0, 2));
+  gr.addElement(new Field(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
+  gr.addElement(new Field(new Value(new Identifier('shr.test', 'Coded')), 0, 1));
+  let choice = new ChoiceValue();
+  choice.addOption(new QuantifiedValue(new Value(new Identifier('shr.other.test', 'Simple')), 1, 1));
+  let choice2 = new ChoiceValue();
+  choice2.addOption(new QuantifiedValue(new Value(new Identifier('shr.test', 'ForeignElementValue')), 1));
+  choice2.addOption(new QuantifiedValue(new Value(new Identifier('shr.test', 'ElementValue')), 1));
+  choice.addOption(new QuantifiedValue(choice2, 1, 1));
+  gr.addElement(new Field(choice, 0, 2));
   ns.addDefinition(gr);
   if (addSubElements) {
     addSimpleElement(ns);
@@ -174,10 +175,10 @@ function addGroupWithChoiceOfChoice(ns, otherNS, addSubElements=true) {
 }
 
 function addGroupPathClash(ns, nsOther, addSubElements=true) {
-  let gr = new Group(new Identifier(ns.namespace, 'GroupPathClash'), true);
+  let gr = new DataElement(new Identifier(ns.namespace, 'GroupPathClash'), true);
   gr.description = 'It is a group of elements with clashing names';
-  gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
-  gr.addElement(new QuantifiedValue(new Value(new Identifier('shr.other.test', 'Simple')), 0, 1));
+  gr.addElement(new Field(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
+  gr.addElement(new Field(new Value(new Identifier('shr.other.test', 'Simple')), 0, 1));
   ns.addDefinition(gr);
   if (addSubElements) {
     addSimpleElement(ns);
@@ -186,11 +187,23 @@ function addGroupPathClash(ns, nsOther, addSubElements=true) {
   return gr;
 }
 
+function addGroupDerivative(ns, otherNS, addSubElements=true) {
+  let gd = new DataElement(new Identifier(ns.namespace, 'GroupDerivative'), true);
+  gd.addBasedOn(new Identifier('shr.test', 'Group'));
+  gd.description = 'It is a derivative of a group of elements';
+  gd.value = new Field(new Value(new PrimitiveIdentifier('string')), 1, 1);
+  ns.addDefinition(gd);
+  if (addSubElements) {
+    addGroup(ns, otherNS, addSubElements);
+  }
+  return gd;
+}
+
 function addSimpleElement(ns) {
   let de = new DataElement(new Identifier(ns.namespace, 'Simple'), true);
   de.description = 'It is a simple element';
   de.addConcept(new Concept('http://foo.org', 'bar', 'Foobar'));
-  de.value = new Value(new PrimitiveIdentifier('string'));
+  de.value = new Field(new Value(new PrimitiveIdentifier('string')), 1, 1);
   ns.addDefinition(de);
   return de;
 }
@@ -198,15 +211,7 @@ function addSimpleElement(ns) {
 function addCodedElement(ns) {
   let de = new DataElement(new Identifier(ns.namespace, 'Coded'), true);
   de.description = 'It is a coded element';
-  de.value = new CodeFromValueSetValue('http://standardhealthrecord.org/test/vs/Coded');
-  ns.addDefinition(de);
-  return de;
-}
-
-function addCodedDescendentElement(ns) {
-  let de = new DataElement(new Identifier(ns.namespace, 'CodedDescendent'), true);
-  de.description = 'It is a coded element descending from foobar';
-  de.value = new CodeFromAncestorValue(new Concept('http://foo.org', 'bar', 'Foobar'));
+  de.value = new Field(new CodeValue(new PrimitiveIdentifier('code'), 'http://standardhealthrecord.org/test/vs/Coded'), 1, 1);
   ns.addDefinition(de);
   return de;
 }
@@ -214,7 +219,7 @@ function addCodedDescendentElement(ns) {
 function addSimpleReference(ns) {
   let de = new DataElement(new Identifier(ns.namespace, 'SimpleReference'), true);
   de.description = 'It is a reference to a simple element';
-  de.value = new RefValue(new Identifier(ns.namespace, 'Simple'));
+  de.value = new Field(new RefValue(new Identifier(ns.namespace, 'Simple')), 1, 1);
   ns.addDefinition(de);
   return de;
 }
@@ -222,7 +227,7 @@ function addSimpleReference(ns) {
 function addTwoDeepElementValue(ns, addSubElement=true) {
   let de = new DataElement(new Identifier(ns.namespace, 'TwoDeepElementValue'), true);
   de.description = 'It is an element with a two-deep element value';
-  de.value = new Value(new Identifier(ns.namespace, 'ElementValue'));
+  de.value = new Field(new Value(new Identifier(ns.namespace, 'ElementValue')), 1, 1);
   ns.addDefinition(de);
   if (addSubElement) {
     addElementValue(ns, true);
@@ -233,7 +238,7 @@ function addTwoDeepElementValue(ns, addSubElement=true) {
 function addElementValue(ns, addSubElement=true) {
   let de = new DataElement(new Identifier(ns.namespace, 'ElementValue'), true);
   de.description = 'It is an element with an element value';
-  de.value = new Value(new Identifier(ns.namespace, 'Simple'));
+  de.value = new Field(new Value(new Identifier(ns.namespace, 'Simple')), 1, 1);
   ns.addDefinition(de);
   if (addSubElement) {
     addSimpleElement(ns);
@@ -244,7 +249,7 @@ function addElementValue(ns, addSubElement=true) {
 function addForeignElementValue(ns, otherNS) {
   let de = new DataElement(new Identifier(ns.namespace, 'ForeignElementValue'), true);
   de.description = 'It is an element with a foreign element value';
-  de.value = new Value(new Identifier(otherNS.namespace, 'Simple'));
+  de.value = new Field(new Value(new Identifier(otherNS.namespace, 'Simple')), 1, 1);
   ns.addDefinition(de);
   addSimpleElement(otherNS);
   return de;
@@ -253,11 +258,11 @@ function addForeignElementValue(ns, otherNS) {
 function addChoice(ns, addSubElements=true) {
   let ch = new DataElement(new Identifier(ns.namespace, 'Choice'), true);
   ch.description = 'It is an element with a choice';
-  let or = new OrValues();
-  or.addValue(new Value(new PrimitiveIdentifier('string')));
-  or.addValue(new QuantifiedValue(new CodeFromValueSetValue('http://standardhealthrecord.org/test/vs/CodeChoice'), 0));
-  or.addValue(new QuantifiedValue(new Value(new Identifier('shr.test', 'Coded')), 1, 1));
-  ch.value = or;
+  let choice = new ChoiceValue();
+  choice.addOption(new QuantifiedValue(new Value(new PrimitiveIdentifier('string')), 1, 1));
+  choice.addOption(new QuantifiedValue(new CodeValue(new PrimitiveIdentifier('code'), 'http://standardhealthrecord.org/test/vs/CodeChoice'), 0));
+  choice.addOption(new QuantifiedValue(new Value(new Identifier('shr.test', 'Coded')), 1, 1));
+  ch.value = new Field(choice, 1, 1);
   ns.addDefinition(ch);
   if (addSubElements) {
     addCodedElement(ns);
@@ -268,14 +273,14 @@ function addChoice(ns, addSubElements=true) {
 function addChoiceOfChoice(ns) {
   let de = new DataElement(new Identifier(ns.namespace, 'ChoiceOfChoice'), true);
   de.description = 'It is an element with a choice containing a choice';
-  let or = new OrValues();
-  or.addValue(new Value(new PrimitiveIdentifier('string')));
-  let or2 = new OrValues();
-  or2.addValue(new Value(new PrimitiveIdentifier('integer')));
-  or2.addValue(new Value(new PrimitiveIdentifier('decimal')));
-  or.addValue(or2);
-  or.addValue(new QuantifiedValue(new CodeFromValueSetValue('http://standardhealthrecord.org/test/vs/CodeChoice'), 0));
-  de.value = or;
+  let choice = new ChoiceValue();
+  choice.addOption(new QuantifiedValue(new Value(new PrimitiveIdentifier('string')), 1, 1));
+  let choice2 = new ChoiceValue();
+  choice2.addOption(new QuantifiedValue(new Value(new PrimitiveIdentifier('integer')), 1, 1));
+  choice2.addOption(new QuantifiedValue(new Value(new PrimitiveIdentifier('decimal')), 1, 1));
+  choice.addOption(new QuantifiedValue(choice2, 1, 1));
+  choice.addOption(new QuantifiedValue(new CodeValue(new PrimitiveIdentifier('code'), 'http://standardhealthrecord.org/test/vs/CodeChoice'), 0));
+  de.value = new Field(choice, 1, 1);
   ns.addDefinition(de);
   return de;
 }

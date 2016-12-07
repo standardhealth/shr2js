@@ -5,4 +5,4 @@ It is a reference to a simple element
 
 |  |  |  |
 | --- | --- | --- |
-| `Value` | reference to [`Simple`](#Simple) |  |
+| Value:&nbsp;reference to [`Simple`](#Simple) |  |  |

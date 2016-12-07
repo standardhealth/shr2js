@@ -5,7 +5,7 @@ It is an element with a foreign element value
 
 |  |  |  |
 | --- | --- | --- |
-| `Value` | [`Simple`](../other/test/index.md#Simple) |  |
+| Value:&nbsp;[`Simple`](../other/test/index.md#Simple) |  | It is a simple element |
 
 # shr.other.test
 
@@ -14,4 +14,4 @@ It is a simple element [bar](http://foo.org/bar) _(Foobar)_
 
 |  |  |  |
 | --- | --- | --- |
-| `Value` | string |  |
+| Value:&nbsp;string |  |  |
