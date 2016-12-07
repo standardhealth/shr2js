@@ -12,7 +12,7 @@ It is a simple element [bar](http://foo.org/bar) _(Foobar)_
 
 |  |  |  |
 | --- | --- | --- |
-| Value:&nbsp;string |  |  |
+| Value:&nbsp;`string` |  |  |
 
 ### <a name="TwoDeepElementValue"></a>TwoDeepElementValue [Entry]
 It is an element with a two-deep element value

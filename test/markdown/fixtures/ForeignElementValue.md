@@ -14,4 +14,4 @@ It is a simple element [bar](http://foo.org/bar) _(Foobar)_
 
 |  |  |  |
 | --- | --- | --- |
-| Value:&nbsp;string |  |  |
+| Value:&nbsp;`string` |  |  |

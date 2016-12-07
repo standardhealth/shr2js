@@ -5,7 +5,7 @@ It is a coded element
 
 |  |  |  |
 | --- | --- | --- |
-| Value:&nbsp;code from http://standardhealthrecord.org/test/vs/Coded |  |  |
+| Value:&nbsp;`code` from http://standardhealthrecord.org/test/vs/Coded |  |  |
 
 ### <a name="ElementValue"></a>ElementValue [Entry]
 It is an element with an element value
@@ -39,14 +39,14 @@ It is a derivative of a group of elements
 |  |  |  |
 | --- | --- | --- |
 | Based&nbsp;On:&nbsp;[`Group`](#Group) |  | It is a group of elements |
-| Value:&nbsp;string |  |  |
+| Value:&nbsp;`string` |  |  |
 
 ### <a name="Simple"></a>Simple [Entry]
 It is a simple element [bar](http://foo.org/bar)
 
 |  |  |  |
 | --- | --- | --- |
-| Value:&nbsp;string |  |  |
+| Value:&nbsp;`string` |  |  |
 
 # shr.other.test
 
@@ -55,4 +55,4 @@ It is a simple element [bar](http://foo.org/bar)
 
 |  |  |  |
 | --- | --- | --- |
-| Value:&nbsp;string |  |  |
+| Value:&nbsp;`string` |  |  |
