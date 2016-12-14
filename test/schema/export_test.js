@@ -30,9 +30,6 @@ describe('#exportToSchemasUniqueCases()', () => {
 
 function exportNamespaces(...namespace) {
   let schemas = exportToSchemas(namespace);
-  if (schemas.length > 1) {
-      expect(validateSchema(schemas));
-  }
   expect(validateSchema(schemas));
   return schemas;
 }
