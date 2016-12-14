@@ -22,7 +22,6 @@ function commonTests(expectedFn, exportFn) {
       const expected = wrappedExpectedFn('Simple', this);
       const actual = exportFn(ns);
       expect(actual).to.eql(expected);
-      expect(validateSchema(actual));
     });
 
     it('should correctly export a simple entry in a different namespace', function() {
@@ -31,7 +30,6 @@ function commonTests(expectedFn, exportFn) {
       const expected = wrappedExpectedFn('ForeignSimple', this);
       const actual = exportFn(otherNS);
       expect(actual).to.eql(expected);
-      expect(validateSchema(actual));
     });
 
     it('should correctly export a coded entry', function() {
@@ -40,7 +38,6 @@ function commonTests(expectedFn, exportFn) {
       const expected = wrappedExpectedFn('Coded', this);
       const actual = exportFn(ns);
       expect(actual).to.eql(expected);
-      expect(validateSchema(actual));
     });
 
     it('should correctly export a coded descendent', function() {
@@ -49,7 +46,6 @@ function commonTests(expectedFn, exportFn) {
       const expected = wrappedExpectedFn('CodedDescendent', this);
       const actual = exportFn(ns);
       expect(actual).to.eql(expected);
-      expect(validateSchema(actual));
     });
 
     it('should correctly export a reference entry', function() {
@@ -58,7 +54,6 @@ function commonTests(expectedFn, exportFn) {
       const expected = wrappedExpectedFn('SimpleReference', this);
       const actual = exportFn(ns);
       expect(actual).to.eql(expected);
-      expect(validateSchema(actual));
     });
 
     it('should correctly export an entry with an element value', function() {
@@ -68,7 +63,6 @@ function commonTests(expectedFn, exportFn) {
       const expected = wrappedExpectedFn('ElementValue', this);
       const actual = exportFn(ns);
       expect(actual).to.eql(expected);
-      expect(validateSchema(actual));
     });
 
     it('should correctly export an entry with an element value in a different namespace', function() {
@@ -79,7 +73,6 @@ function commonTests(expectedFn, exportFn) {
       const expected = wrappedExpectedFn('ForeignElementValue', this);
       const actual = exportFn(ns, otherNS);
       expect(actual).to.eql(expected);
-      expect(validateSchema(actual));
     });
 
     it('should correctly export an entry with two-deep element value', function() {
@@ -89,7 +82,6 @@ function commonTests(expectedFn, exportFn) {
       const expected = wrappedExpectedFn('TwoDeepElementValue', this);
       const actual = exportFn(ns);
       expect(actual).to.eql(expected);
-      expect(validateSchema(actual));
     });
 
     it('should correctly export a choice', function() {
@@ -98,7 +90,6 @@ function commonTests(expectedFn, exportFn) {
       const expected = wrappedExpectedFn('Choice');
       const actual = exportFn(ns);
       expect(actual).to.eql(expected);
-      expect(validateSchema(actual));
     });
 
     it('should correctly export a choice containing a choice', function() {
@@ -107,7 +98,6 @@ function commonTests(expectedFn, exportFn) {
       const expected = wrappedExpectedFn('ChoiceOfChoice', this);
       const actual = exportFn(ns);
       expect(actual).to.eql(expected);
-      expect(validateSchema(actual));
     });
 
     it('should correctly export a group', function() {
@@ -117,7 +107,6 @@ function commonTests(expectedFn, exportFn) {
       const expected = wrappedExpectedFn('Group', this);
       const actual = exportFn(ns, otherNS);
       expect(actual).to.eql(expected);
-      expect(validateSchema(actual));
     });
 
     it('should correctly export a group with a choice containing a choice', function() {
@@ -127,7 +116,6 @@ function commonTests(expectedFn, exportFn) {
       const expected = wrappedExpectedFn('GroupWithChoiceOfChoice', this);
       const actual = exportFn(ns, otherNS);
       expect(actual).to.eql(expected);
-      expect(validateSchema(actual));
     });
 
     it('should correctly export a group with name clashes', function() {
@@ -137,7 +125,6 @@ function commonTests(expectedFn, exportFn) {
       const expected = wrappedExpectedFn('GroupPathClash', this);
       const actual = exportFn(ns, otherNS);
       expect(actual).to.eql(expected);
-      expect(validateSchema(actual));
     });
   };
 }
@@ -295,14 +282,4 @@ function addChoiceOfChoice(ns) {
   return de;
 }
 
-function validateSchema(schema) {
-    const v = new validator();
-    const extendedSchema = importSchema();
-    return v.validate(schema, extendedSchema);
-}
-
-function importSchema() {
-    return JSON.parse(fs.readFileSync(`${__dirname}/../static/schema/extended-schema.schema.json`, 'utf8'));
-}
-
-module.exports = {commonTests, validateSchema};
+module.exports = {commonTests};

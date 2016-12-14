@@ -24,19 +24,30 @@ describe('#exportToSchemasUniqueCases()', () => {
     let schemas = exportToSchemas([ns]);
     expect(schemas).to.have.length(16);
     expect(schemas).to.eql(expectedSchemas);
-    expect(th.validateSchema(schemas));
+    expect(validateSchema(schemas));
   });
-
-
-
 });
 
 function exportNamespaces(...namespace) {
   let schemas = exportToSchemas(namespace);
+  if (schemas.length > 1) {
+      expect(validateSchema(schemas));
+  }
+  expect(validateSchema(schemas));
   return schemas;
 }
 
 function importFixture(name, ext='.json') {
   return JSON.parse(fs.readFileSync(`${__dirname}/fixtures/${name}${ext}`, 'utf8'));
+}
+
+function validateSchema(schema) {
+    const v = new validator();
+    const extendedSchema = importSchema();
+    return v.validate(schema, extendedSchema);
+}
+
+function importSchema() {
+    return JSON.parse(fs.readFileSync(`${__dirname}/../../static/schema/extended-schema.schema.json`, 'utf8'));
 }
 
