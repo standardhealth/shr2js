@@ -133,13 +133,13 @@ function addGroup(ns, otherNS, addSubElements=true) {
   gr.description = 'It is a group of elements';
   gr.addConcept(new Concept('http://foo.org', 'bar', 'Foobar'));
   gr.addConcept(new Concept('http://boo.org', 'far', 'Boofar'));
-  gr.addElement(new Field(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
-  gr.addElement(new Field(new Value(new Identifier('shr.test', 'Coded')), 0, 1));
+  gr.addField(new Field(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
+  gr.addField(new Field(new Value(new Identifier('shr.test', 'Coded')), 0, 1));
   let choice = new ChoiceValue();
   choice.addOption(new QuantifiedValue(new Value(new Identifier('shr.other.test', 'Simple')), 1, 1));
   choice.addOption(new QuantifiedValue(new Value(new Identifier('shr.test', 'ForeignElementValue')), 1));
-  gr.addElement(new Field(choice, 0, 2));
-  gr.addElement(new Field(new Value(new Identifier('shr.test', 'ElementValue')), 0));
+  gr.addField(new Field(choice, 0, 2));
+  gr.addField(new Field(new Value(new Identifier('shr.test', 'ElementValue')), 0));
   ns.addDefinition(gr);
   if (addSubElements) {
     addSimpleElement(ns);
@@ -154,15 +154,15 @@ function addGroup(ns, otherNS, addSubElements=true) {
 function addGroupWithChoiceOfChoice(ns, otherNS, addSubElements=true) {
   let gr = new DataElement(new Identifier(ns.namespace, 'GroupWithChoiceOfChoice'), true);
   gr.description = 'It is a group of elements with a choice containing a choice';
-  gr.addElement(new Field(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
-  gr.addElement(new Field(new Value(new Identifier('shr.test', 'Coded')), 0, 1));
+  gr.addField(new Field(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
+  gr.addField(new Field(new Value(new Identifier('shr.test', 'Coded')), 0, 1));
   let choice = new ChoiceValue();
   choice.addOption(new QuantifiedValue(new Value(new Identifier('shr.other.test', 'Simple')), 1, 1));
   let choice2 = new ChoiceValue();
   choice2.addOption(new QuantifiedValue(new Value(new Identifier('shr.test', 'ForeignElementValue')), 1));
   choice2.addOption(new QuantifiedValue(new Value(new Identifier('shr.test', 'ElementValue')), 1));
   choice.addOption(new QuantifiedValue(choice2, 1, 1));
-  gr.addElement(new Field(choice, 0, 2));
+  gr.addField(new Field(choice, 0, 2));
   ns.addDefinition(gr);
   if (addSubElements) {
     addSimpleElement(ns);
@@ -177,8 +177,8 @@ function addGroupWithChoiceOfChoice(ns, otherNS, addSubElements=true) {
 function addGroupPathClash(ns, nsOther, addSubElements=true) {
   let gr = new DataElement(new Identifier(ns.namespace, 'GroupPathClash'), true);
   gr.description = 'It is a group of elements with clashing names';
-  gr.addElement(new Field(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
-  gr.addElement(new Field(new Value(new Identifier('shr.other.test', 'Simple')), 0, 1));
+  gr.addField(new Field(new Value(new Identifier('shr.test', 'Simple')), 1, 1));
+  gr.addField(new Field(new Value(new Identifier('shr.other.test', 'Simple')), 0, 1));
   ns.addDefinition(gr);
   if (addSubElements) {
     addSimpleElement(ns);
