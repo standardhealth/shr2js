@@ -11,7 +11,6 @@ describe('#exportToSchemasUniqueCases()', () => {
   it('should correctly export all primitive types', () => {
     let ns = new Namespace('shr.test');
     let v = new validator();
-    let extendedSchema = importSchema();
 
     for (let p of ['boolean', 'integer', 'decimal', 'unsignedInt', 'positiveInt',
                    'string', 'markdown', 'code', 'id', 'oid', 'uri', 'base64Binary',
@@ -25,8 +24,7 @@ describe('#exportToSchemasUniqueCases()', () => {
     let schemas = exportToSchemas([ns]);
     expect(schemas).to.have.length(16);
     expect(schemas).to.eql(expectedSchemas);
-
-    expect(v.validate(schemas, extendedSchema));
+    expect(th.validateSchema(schemas));
   });
 
 
@@ -42,6 +40,3 @@ function importFixture(name, ext='.json') {
   return JSON.parse(fs.readFileSync(`${__dirname}/fixtures/${name}${ext}`, 'utf8'));
 }
 
-function importSchema() {
-    return JSON.parse(fs.readFileSync(`${__dirname}/../../static/schema/extended-schema.schema.json`, 'utf8'));
-}
