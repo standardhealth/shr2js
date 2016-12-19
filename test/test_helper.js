@@ -1,7 +1,5 @@
 const {expect} = require('chai');
-const fs = require('fs');
 const {Namespace, DataElement, Concept, Group, Value, CodeFromValueSetValue, CodeFromAncestorValue, RefValue, OrValues, QuantifiedValue, PrimitiveIdentifier, Identifier} = require('../lib/models');
-const validator = require('jsonschema').Validator;
 
 function commonTests(expectedFn, exportFn) {
   const wrappedExpectedFn = function(name, testCase) {

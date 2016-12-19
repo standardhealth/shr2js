@@ -1,6 +1,6 @@
 const {expect} = require('chai');
-const fs = require('fs');
 const th = require('../test_helper');
+const fs = require('fs');
 const {exportToSchemas} = require('../../lib/schema/export');
 const validator = require('jsonschema').Validator;
 const {Namespace, DataElement, Identifier, PrimitiveIdentifier, Value} = require('../../lib/models');
@@ -10,7 +10,6 @@ describe('#exportToSchemasCommonCases()', th.commonTests(importFixture, exportNa
 describe('#exportToSchemasUniqueCases()', () => {
   it('should correctly export all primitive types', () => {
     let ns = new Namespace('shr.test');
-    let v = new validator();
 
     for (let p of ['boolean', 'integer', 'decimal', 'unsignedInt', 'positiveInt',
                    'string', 'markdown', 'code', 'id', 'oid', 'uri', 'base64Binary',
@@ -24,13 +23,13 @@ describe('#exportToSchemasUniqueCases()', () => {
     let schemas = exportToSchemas([ns]);
     expect(schemas).to.have.length(16);
     expect(schemas).to.eql(expectedSchemas);
-    expect(validateSchema(schemas));
+    expect(validateSchema(schemas)).to.be.true;
   });
 });
 
 function exportNamespaces(...namespace) {
   let schemas = exportToSchemas(namespace);
-  expect(validateSchema(schemas));
+  expect(validateSchema(schemas)).to.be.true;
   return schemas;
 }
 
@@ -41,7 +40,18 @@ function importFixture(name, ext='.json') {
 function validateSchema(schema) {
     const v = new validator();
     const extendedSchema = importSchema();
-    return v.validate(schema, extendedSchema);
+    let isValid = false;
+
+    for (let i in schema) {
+        if (v.validate(i, extendedSchema).valid) {
+            isValid = true;
+        } else {
+            isValid = false;
+            break;
+        }
+    }
+
+    return isValid;
 }
 
 function importSchema() {
