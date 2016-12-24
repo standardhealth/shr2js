@@ -2,28 +2,32 @@ const {expect} = require('chai');
 const fs = require('fs');
 const th = require('../test_helper');
 const {exportToMarkdown} = require('../../lib/markdown/export');
-const {Namespace, DataElement, Field, Identifier, PrimitiveIdentifier, Concept, Value, CodeValue} = require('../../lib/models');
+const mdl = require('../../lib/models');
 
 describe('#exportToMarkdownCommonCases()', th.commonTests(importFixture, exportNamespaces));
 
 describe('#exportToMarkdownSpecificCases()', () => {
   it('should correctly export a master index', () => {
-    let ns = new Namespace('shr.test');
-    let de = new DataElement(new Identifier(ns.namespace, 'Simple'), true);
-    de.description = 'It is a simple element';
-    de.addConcept(new Concept('http://foo.org', 'bar'));
-    de.value = new Field(new Value(new PrimitiveIdentifier('string')), 1, 1);
+    let ns = new mdl.Namespace('shr.test');
+    let de = new mdl.DataElement(new mdl.Identifier(ns.namespace, 'Simple'), true)
+      .withDescription('It is a simple element')
+      .withConcept(new mdl.Concept('http://foo.org', 'bar'))
+      .withValue(new mdl.IdentifiableValue(new mdl.PrimitiveIdentifier('string')).withMinMax(1, 1));
     ns.addDefinition(de);
 
-    de = new DataElement(new Identifier(ns.namespace, 'Coded'), true);
-    de.description = 'It is a coded element';
-    de.value = new Field(new CodeValue(new PrimitiveIdentifier('code'), 'http://standardhealthrecord.org/test/vs/Coded'));
+    de = new mdl.DataElement(new mdl.Identifier(ns.namespace, 'Coded'), true)
+      .withDescription('It is a coded element')
+      .withValue(new mdl.IdentifiableValue(new mdl.PrimitiveIdentifier('code')).withMinMax(1, 1)
+        .withConstraint(new mdl.ValueSetConstraint('http://standardhealthrecord.org/test/vs/Coded'))
+      );
     ns.addDefinition(de);
 
-    let ns2 = new Namespace('shr.other.test');
-    de = new DataElement(new Identifier(ns2.namespace, 'Simple'), true);
-    de.description = 'It is a coded element descending from foobar';
-    de.value = new Field(new CodeValue(new PrimitiveIdentifier('code'), 'http://standardhealthrecord.org/other/test/vs/Coded'), 1, 1);
+    let ns2 = new mdl.Namespace('shr.other.test');
+    de = new mdl.DataElement(new mdl.Identifier(ns2.namespace, 'Simple'), true)
+      .withDescription('It is a coded element descending from foobar')
+      .withValue(new mdl.IdentifiableValue(new mdl.PrimitiveIdentifier('code')).withMinMax(1, 1)
+        .withConstraint(new mdl.ValueSetConstraint('http://standardhealthrecord.org/other/test/vs/Coded'))
+      );
     ns2.addDefinition(de);
 
     let expectedMD = importFixture('index');
