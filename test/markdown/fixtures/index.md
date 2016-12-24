@@ -2,7 +2,7 @@
 
 <div class="row">
 
-## [shr.test](shr/test/index.md#)
+## [Test](shr/test/index.md#)
 
 <div class="col-md-4">
 
@@ -20,7 +20,7 @@
 
 <div class="row">
 
-## [shr.other.test](shr/other/test/index.md#)
+## [Other:Test](shr/other/test/index.md#)
 
 <div class="col-md-4">
 

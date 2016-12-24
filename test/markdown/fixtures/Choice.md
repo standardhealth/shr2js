@@ -1,4 +1,4 @@
-# shr.test
+# Test
 
 ### <a name="Choice"></a>Choice [Entry]
 It is an element with a choice

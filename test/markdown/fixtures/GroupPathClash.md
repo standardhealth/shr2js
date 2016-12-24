@@ -1,4 +1,4 @@
-# shr.test
+# Test
 
 ### <a name="GroupPathClash"></a>GroupPathClash [Entry]
 It is a group of elements with clashing names
@@ -15,7 +15,7 @@ It is a simple element [bar](http://foo.org/bar) _(Foobar)_
 | --- | --- | --- |
 | Value:&nbsp;`string` |  |  |
 
-# shr.other.test
+# Other:Test
 
 ### <a name="Simple"></a>Simple [Entry]
 It is a simple element [bar](http://foo.org/bar) _(Foobar)_

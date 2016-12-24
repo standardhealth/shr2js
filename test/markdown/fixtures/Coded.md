@@ -1,4 +1,4 @@
-# shr.test
+# Test
 
 ### <a name="Coded"></a>Coded [Entry]
 It is a coded element
