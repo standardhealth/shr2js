@@ -1,6 +1,7 @@
 const {expect} = require('chai');
 const th = require('../test_helper');
 const fs = require('fs');
+const urlvalidator = require('validator');
 const {exportToSchemas} = require('../../lib/schema/export');
 const validator = require('jsonschema').Validator;
 const {Namespace, DataElement, Identifier, PrimitiveIdentifier, Value} = require('../../lib/models');
@@ -42,19 +43,36 @@ function validateSchema(schema) {
     const extendedSchema = importSchema();
     let isValid = false;
 
-    for (let i in schema) {
-        if (v.validate(i, extendedSchema).valid) {
+   for (let i in schema) {
+        if (v.validate(schema[i], extendedSchema).valid) {
             isValid = true;
+
+            if (typeof schema[i].id != 'undefined') {
+                isValid = urlvalidator.isURL(schema[i].id);
+            }
+            if (typeof schema[i].valueset != 'undefined') {
+                isValid = urlvalidator.isURL(schema[i].valueset);
+            }
+            if (typeof schema[i].concepts != 'undefined') {
+                isValid = urlvalidator.isURL(schema[i].concepts[0].system);
+            }
+            if (!isValid) {
+                break;
+            }
+
         } else {
             isValid = false;
             break;
         }
     }
 
+
+
     return isValid;
 }
 
 function importSchema() {
-    return JSON.parse(fs.readFileSync(`${__dirname}/../../static/schema/extended-schema.schema.json`, 'utf8'));
+    return JSON.parse(fs.readFileSync(`${__dirname}/../../static/schema/types.schema.json`, 'utf8'));
+    //return JSON.parse(fs.readFileSync(`${__dirname}/../../static/schema/extended-schema.schema.json`, 'utf8'));
 }
 
