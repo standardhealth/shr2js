@@ -39,6 +39,8 @@ function importFixture(name, ext='.json') {
 }
 
 function validateSchema(schema) {
+
+    // Note: schema extentions (e.g. Concept) still are not validated correctly as of 1/4/17 (tcrews)
     const v = new validator();
     const extendedSchema = importSchema();
     let isValid = false;
@@ -65,14 +67,10 @@ function validateSchema(schema) {
             break;
         }
     }
-
-
-
     return isValid;
 }
 
 function importSchema() {
-    return JSON.parse(fs.readFileSync(`${__dirname}/../../static/schema/types.schema.json`, 'utf8'));
-    //return JSON.parse(fs.readFileSync(`${__dirname}/../../static/schema/extended-schema.schema.json`, 'utf8'));
+    return JSON.parse(fs.readFileSync(`${__dirname}/../../static/schema/extended-schema.schema.json`, 'utf8'));
 }
 
