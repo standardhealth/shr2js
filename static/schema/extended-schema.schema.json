@@ -8,11 +8,11 @@
         "concepts": {
           "type": "array",
           "items": {
-            "type": "#/definitions/concept"
+            "type": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/concept"
           }
         },
         "descendingFrom": {
-          "type": "#/definitions/concept"
+          "type": "http://standardhealthrecord.org/schemas/shr/types.schema.json#/definitions/concept"
         },
         "valueSet": {
           "type": "string",

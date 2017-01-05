@@ -23,6 +23,8 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.6.1",
-    "mocha": "^3.1.0"
+    "jsonschema": "^1.1.1",
+    "mocha": "^3.1.0",
+    "validator": "^6.2.0"
   }
 }
