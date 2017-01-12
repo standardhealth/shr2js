@@ -15,6 +15,16 @@ describe('#importFromFilePath()', () => {
     expectNoConstraints(simple.value);
   });
 
+    it('should correctly import a valueset', () => {
+        const {namespaces, errors} = importFixture('Valueset');
+        expect(errors).is.empty;
+        const ns = expectAndGetNamespace(namespaces, 0, 'shr.behavior');
+        expect(ns.definitions).to.have.length(7);
+        expect(ns.definitions[0].codes).to.have.length(4);
+        expectConcept(ns.definitions[0].codes[0], 'http://standardhealthrecord.org/base/vs', 'stat', 'STAT - Immediately');
+        expect(ns.definitions[3].concepts).to.have.length(1);
+    });
+
   it('should correctly import a simple element', () => {
     const {namespaces, errors} = importFixture('SimpleElement');
     expect(errors).is.empty;
