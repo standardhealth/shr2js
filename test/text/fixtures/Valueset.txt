@@ -43,7 +43,7 @@ ValueSet:		AllergenIrritantVS
 Includes codes descending from SCT#105590001
 
 ValueSet:		NonDrugSubstanceVS
-Includes codes descending from SCT#105590001 "Substance" and not descending from SCT#410942007 "Drug or medicament"
+Includes codes descending from SCT#105590001 "Substance" and not descending from SCT#410942007 "Drug or medicament" and not descending from SCT#00000000 "Amputation"
 
 ValueSet:		NoKnownSubstanceRiskVS
 Includes codes from SCT#716186003 "No known allergy"
